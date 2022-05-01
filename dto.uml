@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>com.dmitrymilya.visa.shared.dto</OriginalElement>
+  <nodes>
+    <node x="247.422245108136" y="-15.052523171987673">com.dmitrymilya.visa.shared.dto.VisaInfoDto</node>
+    <node x="169.5" y="232.0">com.dmitrymilya.visa.shared.dto.ApplicantInfoDto</node>
+    <node x="635.344490216272" y="232.0">com.dmitrymilya.visa.shared.dto.AddressDto</node>
+    <node x="408.03141091658085" y="533.0">com.dmitrymilya.visa.shared.dto.PersonDocumentDto</node>
+    <node x="14.5" y="-52.625128733264546">com.dmitrymilya.visa.shared.model.EntryTypeEnum</node>
+    <node x="14.5" y="692.6251287332645">com.dmitrymilya.visa.shared.dto.ContactInfoDto</node>
+    <node x="14.5" y="57.61483007209057">com.dmitrymilya.visa.shared.model.CategoryEnum</node>
+    <node x="543.9176107106075" y="430.0">com.dmitrymilya.visa.shared.model.SexEnum</node>
+    <node x="202.0" y="670.6251287332645">com.dmitrymilya.visa.shared.dto.WorkOrStudyInfoDto</node>
+    <node x="560.344490216272" y="79.61483007209057">com.dmitrymilya.visa.shared.dto.VisaApplicationDto</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="com.dmitrymilya.visa.shared.dto.WorkOrStudyInfoDto" target="com.dmitrymilya.visa.shared.dto.AddressDto" relationship="TO_ONE">
+      <point x="97.0" y="0.0" />
+      <point x="704.844490216272" y="730.6251287332645" />
+      <point x="0.0" y="93.0" />
+    </edge>
+    <edge source="com.dmitrymilya.visa.shared.dto.ApplicantInfoDto" target="com.dmitrymilya.visa.shared.dto.AddressDto" relationship="TO_ONE">
+      <point x="129.5" y="0.0" />
+      <point x="570.1302780638517" y="369.0" />
+      <point x="570.1302780638517" y="325.0" />
+      <point x="-69.5" y="0.0" />
+    </edge>
+    <edge source="com.dmitrymilya.visa.shared.dto.ApplicantInfoDto" target="com.dmitrymilya.visa.shared.dto.PersonDocumentDto" relationship="TO_ONE">
+      <point x="129.5" y="32.0" />
+      <point x="501.03141091658085" y="401.0" />
+      <point x="-0.0" y="-82.0" />
+    </edge>
+    <edge source="com.dmitrymilya.visa.shared.dto.ApplicantInfoDto" target="com.dmitrymilya.visa.shared.model.SexEnum" relationship="TO_ONE">
+      <point x="129.5" y="22.0" />
+      <point x="599.4176107106075" y="391.0" />
+      <point x="-0.0" y="-38.0" />
+    </edge>
+    <edge source="com.dmitrymilya.visa.shared.dto.VisaApplicationDto" target="com.dmitrymilya.visa.shared.dto.ApplicantInfoDto" relationship="TO_ONE">
+      <point x="-107.0" y="0.0" />
+      <point x="299.0" y="139.61483007209057" />
+      <point x="0.0" y="-137.0" />
+    </edge>
+    <edge source="com.dmitrymilya.visa.shared.dto.WorkOrStudyInfoDto" target="com.dmitrymilya.visa.shared.dto.ContactInfoDto" relationship="TO_ONE">
+      <point x="-97.0" y="0.0" />
+      <point x="81.0" y="0.0" />
+    </edge>
+    <edge source="com.dmitrymilya.visa.shared.dto.VisaInfoDto" target="com.dmitrymilya.visa.shared.model.EntryTypeEnum" relationship="TO_ONE">
+      <point x="0.0" y="60.0" />
+      <point x="340.422245108136" y="25.07312049433574" />
+      <point x="91.0" y="25.07312049433574" />
+      <point x="0.0" y="-49.0" />
+    </edge>
+    <edge source="com.dmitrymilya.visa.shared.dto.ApplicantInfoDto" target="com.dmitrymilya.visa.shared.dto.ContactInfoDto" relationship="TO_ONE">
+      <point x="-129.5" y="0.0" />
+      <point x="95.5" y="369.0" />
+      <point x="0.0" y="-38.0" />
+    </edge>
+    <edge source="com.dmitrymilya.visa.shared.dto.VisaApplicationDto" target="com.dmitrymilya.visa.shared.dto.VisaInfoDto" relationship="TO_ONE">
+      <point x="0.0" y="-60.0" />
+      <point x="667.344490216272" y="44.94747682801233" />
+      <point x="93.0" y="0.0" />
+    </edge>
+    <edge source="com.dmitrymilya.visa.shared.dto.VisaApplicationDto" target="com.dmitrymilya.visa.shared.dto.AddressDto" relationship="TO_MANY">
+      <point x="0.0" y="60.0" />
+      <point x="667.344490216272" y="242.5" />
+      <point x="704.844490216272" y="242.5" />
+      <point x="0.0" y="-93.0" />
+    </edge>
+    <edge source="com.dmitrymilya.visa.shared.dto.VisaInfoDto" target="com.dmitrymilya.visa.shared.model.CategoryEnum" relationship="TO_ONE">
+      <point x="21.0" y="60.0" />
+      <point x="361.422245108136" y="69.0" />
+      <point x="88.5" y="69.0" />
+      <point x="0.0" y="-71.0" />
+    </edge>
+    <edge source="com.dmitrymilya.visa.shared.dto.ApplicantInfoDto" target="com.dmitrymilya.visa.shared.dto.WorkOrStudyInfoDto" relationship="TO_ONE">
+      <point x="0.0" y="137.0" />
+      <point x="0.0" y="-60.0" />
+    </edge>
+  </edges>
+  <settings layout="Compact" zoom="0.9160377358490567" showDependencies="true" x="457.0" y="373.058702368692" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Fields</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

@@ -15,7 +15,7 @@ public class EpguVisaApplicationSmevAdapter {
 
     private final ApplicationSender applicationSender;
 
-    @KafkaListener(topics = "${application.kafka.incoming-application-topic-name}")
+    @KafkaListener(topics = "${application.kafka.incoming-application-topic-name:incoming_application}")
     public void consume(String messageString) {
         VisaApplication visaApplication = visaApplicationUnmarshaller.unmarshallApplication(messageString);
 
