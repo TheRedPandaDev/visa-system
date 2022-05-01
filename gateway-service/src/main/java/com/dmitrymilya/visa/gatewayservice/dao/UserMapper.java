@@ -12,10 +12,10 @@ import java.util.Optional;
 @Repository
 public interface UserMapper {
 
-    @Select("SELECT * FROM user_storage.\"user\" WHERE username = #{username}")
+    @Select("SELECT * FROM user_table WHERE username = #{username}")
     Optional<User> findByUsername(String username);
 
-    @Insert("INSERT INTO user_storage.\"user\"(username, password) VALUES (#{username}, #{password})")
+    @Insert("INSERT INTO user_table(username, password) VALUES (#{username}, #{password})")
     void saveUser(User user);
 
 }

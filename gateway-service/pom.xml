@@ -13,8 +13,14 @@
     <description>Gateway Service</description>
     <properties>
         <spring-cloud.version>2021.0.1</spring-cloud.version>
+        <liquibase.version>4.9.1</liquibase.version>
     </properties>
     <dependencies>
+        <dependency>
+            <groupId>org.liquibase</groupId>
+            <artifactId>liquibase-maven-plugin</artifactId>
+            <version>${liquibase.version}</version>
+        </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
@@ -89,7 +95,63 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
+            <plugin>
+                <groupId>org.liquibase</groupId>
+                <artifactId>liquibase-maven-plugin</artifactId>
+                <version>${liquibase.version}</version>
+                <configuration>
+                    <!--suppress UnresolvedMavenProperty -->
+                    <changelogSchemaName>${profile.changelogSchemaName}</changelogSchemaName>
+                    <!--suppress UnresolvedMavenProperty -->
+                    <propertyFile>${profile.propertyFile}</propertyFile>
+                    <!--suppress UnresolvedMavenProperty -->
+                    <changeLogFile>${profile.changeLogFile}</changeLogFile>
+                    <!--suppress UnresolvedMavenProperty -->
+                    <dataDir>${profile.dataDir}</dataDir>
+                    <!--suppress UnresolvedMavenProperty, MavenModelInspection, MybatisXMapperXmlInspection -->
+                    <verbose>${profile.verbose}</verbose>
+                    <!--suppress UnresolvedMavenProperty -->
+                    <logging>${profile.logging}</logging>
+                    <promptOnNonLocalDatabase>false</promptOnNonLocalDatabase>
+                </configuration>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.liquibase.ext</groupId>
+                        <artifactId>liquibase-hibernate4</artifactId>
+                        <version>3.6</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>org.springframework</groupId>
+                        <artifactId>spring-beans</artifactId>
+                        <version>5.3.16</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>org.springframework.data</groupId>
+                        <artifactId>spring-data-jpa</artifactId>
+                        <version>2.6.2</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
         </plugins>
     </build>
 
+    <profiles>
+        <profile>
+            <id>local</id>
+            <activation>
+                <property>
+                    <name>env</name>
+                    <value>local</value>
+                </property>
+            </activation>
+            <properties>
+                <profile.propertyFile>src/main/resources/db/local/liquibase.properties</profile.propertyFile>
+                <profile.changeLogFile>src/main/resources/db/changelog/db.changelog-master.yaml</profile.changeLogFile>
+                <profile.dataDir>src/main/resources/db/local/data</profile.dataDir>
+                <profile.verbose>true</profile.verbose>
+                <profile.logging>debug</profile.logging>
+                <profile.changelogSchemaName>management_service</profile.changelogSchemaName>
+            </properties>
+        </profile>
+    </profiles>
 </project>
