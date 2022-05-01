@@ -35,7 +35,6 @@ public class ApplicantInfoDto {
     @NotNull
     private AddressDto address;
 
-    @NotNull
     private WorkOrStudyInfoDto workOrStudyInfo;
 
     @NotNull

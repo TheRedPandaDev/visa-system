@@ -65,6 +65,10 @@
             <version>0.11.2</version>
         </dependency>
         <dependency>
+            <groupId>org.springframework.data</groupId>
+            <artifactId>spring-data-jpa</artifactId>
+        </dependency>
+        <dependency>
             <groupId>io.jsonwebtoken</groupId>
             <artifactId>jjwt-impl</artifactId>
             <version>0.11.2</version>
@@ -101,8 +105,6 @@
                 <version>${liquibase.version}</version>
                 <configuration>
                     <!--suppress UnresolvedMavenProperty -->
-                    <changelogSchemaName>${profile.changelogSchemaName}</changelogSchemaName>
-                    <!--suppress UnresolvedMavenProperty -->
                     <propertyFile>${profile.propertyFile}</propertyFile>
                     <!--suppress UnresolvedMavenProperty -->
                     <changeLogFile>${profile.changeLogFile}</changeLogFile>
@@ -114,23 +116,6 @@
                     <logging>${profile.logging}</logging>
                     <promptOnNonLocalDatabase>false</promptOnNonLocalDatabase>
                 </configuration>
-                <dependencies>
-                    <dependency>
-                        <groupId>org.liquibase.ext</groupId>
-                        <artifactId>liquibase-hibernate4</artifactId>
-                        <version>3.6</version>
-                    </dependency>
-                    <dependency>
-                        <groupId>org.springframework</groupId>
-                        <artifactId>spring-beans</artifactId>
-                        <version>5.3.16</version>
-                    </dependency>
-                    <dependency>
-                        <groupId>org.springframework.data</groupId>
-                        <artifactId>spring-data-jpa</artifactId>
-                        <version>2.6.2</version>
-                    </dependency>
-                </dependencies>
             </plugin>
         </plugins>
     </build>
@@ -150,7 +135,6 @@
                 <profile.dataDir>src/main/resources/db/local/data</profile.dataDir>
                 <profile.verbose>true</profile.verbose>
                 <profile.logging>debug</profile.logging>
-                <profile.changelogSchemaName>management_service</profile.changelogSchemaName>
             </properties>
         </profile>
     </profiles>

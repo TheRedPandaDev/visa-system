@@ -1,26 +1,28 @@
-package com.dmitrymilya.visa.shared.dto;
+package com.dmitrymilya.visa.applicationprocessingservice.entity;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
-import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 
 @Data
-public class PersonDocumentDto {
+@NoArgsConstructor
+@AllArgsConstructor
+public class PersonDocumentEntity {
+
+    private Long id;
 
     private String seriesCode;
 
-    @NotNull
     private String docNo;
 
-    @NotNull
     private LocalDate issueDate;
 
     private LocalDate validFrom;
 
     private LocalDate validTo;
 
-    @NotNull
     private String issuer;
 
 }

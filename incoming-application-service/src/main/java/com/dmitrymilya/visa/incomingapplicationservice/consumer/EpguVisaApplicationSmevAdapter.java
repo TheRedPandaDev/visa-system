@@ -5,9 +5,9 @@ import com.dmitrymilya.visa.incomingapplicationservice.model.VisaApplication;
 import com.dmitrymilya.visa.incomingapplicationservice.service.ApplicationSender;
 import lombok.RequiredArgsConstructor;
 import org.springframework.kafka.annotation.KafkaListener;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 
-@Service
+@Component
 @RequiredArgsConstructor
 public class EpguVisaApplicationSmevAdapter {
 

@@ -12,9 +12,18 @@ public class KafkaTopicConfig {
     @Value("${application.kafka.incoming-application-topic-name:incoming_application}")
     private String incomingApplicationTopicName;
 
+    @Value("${application.kafka.application-processing-topic-name:application_processing}")
+    private String applicationProcessingTopicName;
+
     @Bean
     public NewTopic incomingApplicationTopic() {
         return TopicBuilder.name(incomingApplicationTopicName)
+                .build();
+    }
+
+    @Bean
+    public NewTopic applicationProcessingTopic() {
+        return TopicBuilder.name(applicationProcessingTopicName)
                 .build();
     }
 

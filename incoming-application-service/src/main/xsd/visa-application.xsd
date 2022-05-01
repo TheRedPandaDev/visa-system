@@ -86,7 +86,7 @@
     <xs:complexType name="WorkOrStudyInfo">
         <xs:sequence>
             <xs:element name="organization" type="xs:string"/>
-            <xs:element name="address" type="nsv:Address" minOccurs="0"/>
+            <xs:element name="address" type="nsv:Address"/>
             <xs:element name="jobTitle" type="xs:string"/>
             <xs:element name="contactInfo" type="nsv:ContactInfo"/>
         </xs:sequence>
@@ -148,7 +148,7 @@
     <xs:complexType name="ContactInfo">
         <xs:sequence>
             <xs:element name="phoneNumber" type="nsv:PhoneNumber"/>
-            <xs:element name="email" type="nsv:EmailAddress" minOccurs="0"/>
+            <xs:element name="email" type="nsv:EmailAddress"/>
         </xs:sequence>
     </xs:complexType>
 

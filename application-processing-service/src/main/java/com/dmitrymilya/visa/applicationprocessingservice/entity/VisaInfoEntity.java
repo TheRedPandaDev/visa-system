@@ -1,25 +1,25 @@
-package com.dmitrymilya.visa.shared.dto;
+package com.dmitrymilya.visa.applicationprocessingservice.entity;
 
 import com.dmitrymilya.visa.shared.model.CategoryEnum;
 import com.dmitrymilya.visa.shared.model.EntryTypeEnum;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
-import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 
 @Data
-public class VisaInfoDto {
+@NoArgsConstructor
+@AllArgsConstructor
+public class VisaInfoEntity {
 
-    @NotNull
+    private Long id;
+
     private EntryTypeEnum entryType;
 
-    @NotNull
     private CategoryEnum category;
 
-    @NotNull
     private LocalDate validFrom;
 
-    @NotNull
     private LocalDate validTo;
-
 }
