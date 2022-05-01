@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="urn://system/visa/1.0.0"
+           xmlns:nsv="urn://system/visa/1.0.0"
+           elementFormDefault="qualified">
+
+    <xs:annotation>
+        <xs:documentation>
+            Вид сведений для формирования и отправки заявлений на оформление виз иностранным гражданам
+        </xs:documentation>
+    </xs:annotation>
+
+    <xs:element name="VisaApplication">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="orderId" type="xs:long"/>
+                <xs:element name="visaForm" type="nsv:VisaForm"/>
+            </xs:sequence>
+            <xs:attribute name="Id" type="xs:string"/>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:complexType name="VisaForm">
+        <xs:sequence>
+            <xs:element name="visaInfo" type="nsv:VisaInfo"/>
+            <xs:element name="applicantInfo" type="nsv:ApplicantInfo"/>
+            <xs:element name="visitPoints" type="nsv:VisitPoints"/>
+            <xs:element name="attachedPhoto" type="xs:base64Binary"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="VisaInfo">
+        <xs:sequence>
+            <xs:element name="entryType" type="nsv:EntryTypeEnum"/>
+            <xs:element name="category" type="nsv:CategoryEnum"/>
+            <xs:element name="validPeriod" type="nsv:DatePeriod"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:simpleType name="EntryTypeEnum">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="SINGLE"/>
+            <xs:enumeration value="DOUBLE"/>
+            <xs:enumeration value="MULTIPLE"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="CategoryEnum">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="TOURIST"/>
+            <xs:enumeration value="WORK"/>
+            <xs:enumeration value="STUDY"/>
+            <xs:enumeration value="BUSINESS"/>
+            <xs:enumeration value="TRANSIT"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:complexType name="VisitPoints">
+        <xs:sequence>
+            <xs:element maxOccurs="unbounded" name="visitPoint" type="nsv:Address"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="ApplicantInfo">
+        <xs:sequence>
+            <xs:element name="personData" type="nsv:FullPersonData"/>
+            <xs:element name="contactInfo" type="nsv:ContactInfo"/>
+            <xs:element name="foreignLivingAddress" type="nsv:Address"/>
+            <xs:element name="workOrStudyInfo" type="nsv:WorkOrStudyInfo" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:simpleType name="PhoneNumber">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="\+?\d+ \(\d{3}\) \d{3}-\d{2}-\d{2}"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="EmailAddress">
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="100"/>
+            <xs:pattern value="[0-9a-zA-Z_.\-]{2,50}[@][0-9a-zA-Z_./-]{2,50}[.][a-zA-Z]{2,5}"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:complexType name="WorkOrStudyInfo">
+        <xs:sequence>
+            <xs:element name="organization" type="xs:string"/>
+            <xs:element name="address" type="nsv:Address" minOccurs="0"/>
+            <xs:element name="jobTitle" type="xs:string"/>
+            <xs:element name="contactInfo" type="nsv:ContactInfo"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="PersonDocument">
+        <xs:sequence>
+            <xs:element name="seriesCode" type="xs:string" minOccurs="0"/>
+            <xs:element name="docNo" type="xs:string"/>
+            <xs:element name="issueDate" type="nsv:Date"/>
+            <xs:element name="validPeriod" type="nsv:DatePeriod" minOccurs="0"/>
+            <xs:element name="issuer" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:simpleType name="Date">
+        <xs:annotation>
+            <xs:documentation>YYYY-MM-DD</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:length value="10"/>
+            <xs:pattern value="\d{4}-\d\d-\d\d"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:complexType name="DatePeriod">
+        <xs:sequence>
+            <xs:element name="start" type="nsv:Date"/>
+            <xs:element name="end" type="nsv:Date"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="FIO">
+        <xs:sequence>
+            <xs:element name="lastName" type="xs:string"/>
+            <xs:element name="firstName" type="xs:string"/>
+            <xs:element name="middleName" type="xs:string" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:simpleType name="SexEnum">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="MALE"/>
+            <xs:enumeration value="FEMALE"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:complexType name="FullPersonData">
+        <xs:sequence>
+            <xs:element name="personDocument" type="nsv:PersonDocument"/>
+            <xs:element name="sex" type="nsv:SexEnum"/>
+            <xs:element name="birthCountry" type="xs:string"/>
+            <xs:element name="citizenship" type="xs:string"/>
+            <xs:element name="fio" type="nsv:FIO"/>
+            <xs:element name="birthDate" type="nsv:Date"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="ContactInfo">
+        <xs:sequence>
+            <xs:element name="phoneNumber" type="nsv:PhoneNumber"/>
+            <xs:element name="email" type="nsv:EmailAddress" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="Address">
+        <xs:sequence>
+            <xs:element name="region" type="xs:string"/>
+            <xs:element name="city" type="xs:string"/>
+            <xs:element name="street" type="xs:string" minOccurs="0"/>
+            <xs:element name="house" type="xs:string" minOccurs="0"/>
+            <xs:element name="section" type="xs:string" minOccurs="0"/>
+            <xs:element name="building" type="xs:string" minOccurs="0"/>
+            <xs:element name="apartment" type="xs:string" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:schema>
