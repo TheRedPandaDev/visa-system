@@ -14,6 +14,6 @@ public interface ContactInfoMapper {
             "values (#{id}, #{email}, #{phoneNumber})")
     @SelectKey(resultType = Long.class, keyProperty = "id", before = true,
             statement = "select nextval('contact_info_id_seq')")
-    ContactInfoEntity insert(ContactInfoEntity contactInfoEntity);
+    void insert(ContactInfoEntity contactInfoEntity);
 
 }

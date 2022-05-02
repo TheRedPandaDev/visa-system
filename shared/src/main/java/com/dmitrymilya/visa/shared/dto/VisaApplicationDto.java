@@ -12,7 +12,7 @@ public class VisaApplicationDto {
     private ApplicantInfoDto applicantInfo;
 
     @NotNull
-    private VisaInfoDto visaInfoDto;
+    private VisaInfoDto visaInfo;
 
     @NotNull
     private List<AddressDto> visitPoints;

@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dmitrymilya.visa.applicationprocessingservice.dao.UserTaskMapper">
+    <resultMap id="userTask" type="com.dmitrymilya.visa.applicationprocessingservice.entity.UserTaskEntity"
+               autoMapping="true">
+        <id property="id" column="ut_id"/>
+        <result property="visaApplicationId" column="ut_visaApplicationId"/>
+        <result property="decision" column="ut_decision"/>
+        <result property="createDttm" column="ut_createDttm"/>
+        <association property="visaApplication"
+                     javaType="com.dmitrymilya.visa.applicationprocessingservice.entity.VisaApplicationEntity"
+                     autoMapping="true" columnPrefix="va_">
+            <id property="id" column="id"/>
+            <collection property="visitPoints" column="id"
+                        ofType="com.dmitrymilya.visa.applicationprocessingservice.entity.VisitAddressEntity"
+                        select="getVisitPoints" fetchType="eager" autoMapping="true"/>
+        </association>
+        <association property="visaApplication.visaInfo"
+                     javaType="com.dmitrymilya.visa.applicationprocessingservice.entity.VisaInfoEntity"
+                     autoMapping="true" columnPrefix="vi_"/>
+        <association property="visaApplication.applicantInfo"
+                     javaType="com.dmitrymilya.visa.applicationprocessingservice.entity.ApplicantInfoEntity"
+                     autoMapping="true" columnPrefix="ai_"/>
+        <association property="visaApplication.applicantInfo.address"
+                     javaType="com.dmitrymilya.visa.applicationprocessingservice.entity.AddressEntity"
+                     autoMapping="true" columnPrefix="a_"/>
+        <association property="visaApplication.applicantInfo.contactInfo"
+                     javaType="com.dmitrymilya.visa.applicationprocessingservice.entity.ContactInfoEntity"
+                     autoMapping="true" columnPrefix="ci_"/>
+        <association property="visaApplication.applicantInfo.personDocument"
+                     javaType="com.dmitrymilya.visa.applicationprocessingservice.entity.PersonDocumentEntity"
+                     autoMapping="true" columnPrefix="pd_"/>
+        <association property="visaApplication.applicantInfo.workOrStudyInfo"
+                     javaType="com.dmitrymilya.visa.applicationprocessingservice.entity.WorkOrStudyInfoEntity"
+                     autoMapping="true" columnPrefix="wosi_"/>
+        <association property="visaApplication.applicantInfo.workOrStudyInfo.address"
+                     javaType="com.dmitrymilya.visa.applicationprocessingservice.entity.AddressEntity"
+                     autoMapping="true" columnPrefix="wosia_"/>
+        <association property="visaApplication.applicantInfo.workOrStudyInfo.contactInfo"
+                     javaType="com.dmitrymilya.visa.applicationprocessingservice.entity.ContactInfoEntity"
+                     autoMapping="true" columnPrefix="wosic_"/>
+    </resultMap>
+    
+    <select id="getVisitPoints" 
+            resultType="com.dmitrymilya.visa.applicationprocessingservice.entity.VisitAddressEntity">
+        select visit_a.id id,
+               visit_a.city city,
+               visit_a.region region,
+               visit_a.visa_application_id visaApplicationId
+            from visit_address visit_a
+        where visit_a.visa_application_id = #{va_id}
+    </select>
+
+    <select id="getUserTasksForDecision" resultMap="userTask">
+        select
+            ut.id ut_id,
+            ut.visa_application_id ut_visaApplicationId,
+            ut.decision ut_decision,
+            ut.create_dttm ut_createDttm,
+
+            va.id va_id,
+            va.applicant_info_id va_applicantInfoId,
+            va.attached_photo va_attachedPhoto,
+            va.visa_info_id va_visaInfoId,
+
+            vi.id vi_id,
+            vi.category_type vi_category,
+            vi.entry_type vi_entryType,
+            vi.valid_from vi_validFrom,
+            vi.valid_to vi_validTo,
+
+            ai.id ai_id,
+            ai.sex ai_sex,
+            ai.birth_country ai_birthCountry,
+            ai.birth_date ai_birthDate,
+            ai.last_name ai_lastName,
+            ai.first_name ai_firstName,
+            ai.middle_name ai_middleName,
+            ai.citizenship ai_citizenship,
+            ai.contact_info_id ai_contactInfoId,
+            ai.address_id ai_addressId,
+            ai.person_document_id ai_personDocumentId,
+            ai.work_or_study_info_id ai_workOrStudyInfoId,
+
+            a.id a_id,
+            a.region a_region,
+            a.city a_city,
+            a.street a_street,
+            a.house a_house,
+            a.section a_section,
+            a.building a_building,
+            a.apartment a_apartment,
+
+            ci.id ci_id,
+            ci.email ci_email,
+            ci.phone_number ci_phoneNumber,
+
+            pd.id pd_id,
+            pd.doc_no pd_docNo,
+            pd.series_code pd_seriesCode,
+            pd.issue_date pd_issueDate,
+            pd.valid_from pd_validFrom,
+            pd.valid_to pd_validTo,
+            pd.issuer pd_issuer,
+
+            wosi.id wosi_id,
+            wosi.organization wosi_organization,
+            wosi.job_title wosi_jobTitle,
+            wosi.contact_info_id wosi_contactInfoId,
+            wosi.address_id wosi_addressId,
+
+            wosia.id wosia_id,
+            wosia.region wosia_region,
+            wosia.city wosia_city,
+            wosia.street wosia_street,
+            wosia.house wosia_house,
+            wosia.section wosia_section,
+            wosia.building wosia_building,
+            wosia.apartment wosia_apartment,
+
+            wosic.id wosic_id,
+            wosic.email wosic_email,
+            wosic.phone_number wosic_phoneNumber
+        from user_task ut
+            inner join visa_application va on (ut.decision is null and va.id = ut.visa_application_id)
+            inner join visa_info vi on vi.id = va.visa_info_id
+            inner join applicant_info ai on ai.id = va.applicant_info_id
+            inner join address a on a.id = ai.address_id
+            inner join contact_info ci on ci.id = ai.contact_info_id
+            inner join person_document pd on pd.id = ai.person_document_id
+            inner join work_or_study_info wosi on wosi.id = ai.work_or_study_info_id
+            inner join address wosia on wosia.id = wosi.address_id
+            inner join contact_info wosic on wosic.id = wosi.contact_info_id
+        order by ut.create_dttm desc
+        limit #{limit} offset #{offset}
+    </select>
+
+    <select id="getUserTasksForDecisionCount" resultType="java.lang.Long">
+        select count(*)
+        from user_task
+        where decision is null
+    </select>
+
+</mapper>

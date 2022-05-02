@@ -12,7 +12,7 @@ public class ApplicationMessageConsumer {
 
     private final ApplicationProcessingFacade applicationProcessingFacade;
 
-    @KafkaListener(topics = "${application.kafka.application-processing-topic-name:application_processing}")
+//    @KafkaListener(topics = "${application.kafka.application-processing-topic-name:application_processing}")
     public void consumeApplication(VisaApplicationDto visaApplication) {
         applicationProcessingFacade.prepareApplicationForProcessing(visaApplication);
     }

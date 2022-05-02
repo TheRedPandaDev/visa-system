@@ -24,7 +24,7 @@ public class VisaApplicationToDtoConverter implements Converter<VisaApplication,
         VisaApplicationDto visaApplicationDto = new VisaApplicationDto();
 
         visaApplicationDto.setApplicantInfo(modelMapper.map(visaForm.getApplicantInfo(), ApplicantInfoDto.class));
-        visaApplicationDto.setVisaInfoDto(modelMapper.map(visaForm.getVisaInfo(), VisaInfoDto.class));
+        visaApplicationDto.setVisaInfo(modelMapper.map(visaForm.getVisaInfo(), VisaInfoDto.class));
         visaApplicationDto.setVisitPoints(visaForm.getVisitPoints().getVisitPoint().stream()
                 .map(address -> modelMapper.map(address, AddressDto.class))
                 .toList());

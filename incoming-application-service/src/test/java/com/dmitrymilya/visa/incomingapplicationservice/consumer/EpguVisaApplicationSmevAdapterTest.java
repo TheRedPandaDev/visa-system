@@ -188,7 +188,7 @@ class EpguVisaApplicationSmevAdapterTest {
         assertThat(visaApplicationDto.getAttachedPhoto()).isEqualTo(visaForm.getAttachedPhoto());
         assertThat(visaApplicationDto.getVisitPoints()).hasSize(visitPoints.size());
 
-        VisaInfoDto visaInfoDto = visaApplicationDto.getVisaInfoDto();
+        VisaInfoDto visaInfoDto = visaApplicationDto.getVisaInfo();
 
         assertThat(visaInfoDto.getCategory().name()).isEqualTo(visaInfo.getCategory().value());
         assertThat(visaInfoDto.getEntryType().name()).isEqualTo(visaInfo.getEntryType().value());
