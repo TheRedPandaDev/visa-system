@@ -52,6 +52,22 @@
     </select>
 
     <select id="getUserTasksForDecision" resultMap="userTask">
+        <include refid="selectUserTasksForDecision"/>
+        limit #{limit} offset #{offset}
+    </select>
+
+    <select id="getUserTasksForDecisionCount" resultType="java.lang.Long">
+        select count(*)
+        from user_task
+        where decision is null
+    </select>
+
+    <select id="getUserTaskById" resultMap="userTask">
+        <include refid="selectUserTasksForDecision"/>
+        where ut_id = #{id}
+    </select>
+
+    <sql id="selectUserTasksForDecision">
         select
             ut.id ut_id,
             ut.visa_application_id ut_visaApplicationId,
@@ -122,23 +138,16 @@
             wosic.email wosic_email,
             wosic.phone_number wosic_phoneNumber
         from user_task ut
-            inner join visa_application va on (ut.decision is null and va.id = ut.visa_application_id)
-            inner join visa_info vi on vi.id = va.visa_info_id
-            inner join applicant_info ai on ai.id = va.applicant_info_id
-            inner join address a on a.id = ai.address_id
-            inner join contact_info ci on ci.id = ai.contact_info_id
-            inner join person_document pd on pd.id = ai.person_document_id
-            inner join work_or_study_info wosi on wosi.id = ai.work_or_study_info_id
-            inner join address wosia on wosia.id = wosi.address_id
-            inner join contact_info wosic on wosic.id = wosi.contact_info_id
+                 inner join visa_application va on (ut.decision is null and va.id = ut.visa_application_id)
+                 inner join visa_info vi on vi.id = va.visa_info_id
+                 inner join applicant_info ai on ai.id = va.applicant_info_id
+                 inner join address a on a.id = ai.address_id
+                 inner join contact_info ci on ci.id = ai.contact_info_id
+                 inner join person_document pd on pd.id = ai.person_document_id
+                 inner join work_or_study_info wosi on wosi.id = ai.work_or_study_info_id
+                 inner join address wosia on wosia.id = wosi.address_id
+                 inner join contact_info wosic on wosic.id = wosi.contact_info_id
         order by ut.create_dttm desc
-        limit #{limit} offset #{offset}
-    </select>
-
-    <select id="getUserTasksForDecisionCount" resultType="java.lang.Long">
-        select count(*)
-        from user_task
-        where decision is null
-    </select>
+    </sql>
 
 </mapper>

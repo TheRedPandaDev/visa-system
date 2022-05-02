@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>C:/Users/Dmily/Work/visa-system/mail-notification-service/src/main/java/com/dmitrymilya/visa/mailnotificationservice</OriginalElement>
+  <nodes>
+    <node x="599.049009397315" y="291.38327694623314">com.dmitrymilya.visa.mailnotificationservice.consumer.MailNotificationMessageConsumer</node>
+    <node x="643.5823427306484" y="616.9780982167168">com.dmitrymilya.visa.mailnotificationservice.service.MailSenderService</node>
+    <node x="190.82428920717922" y="650.4780982167168">com.dmitrymilya.visa.mailnotificationservice.generator.ApplicationDeclinedMessageGenerator</node>
+    <node x="190.82428920717922" y="759.1653163619235">com.dmitrymilya.visa.mailnotificationservice.generator.VisaIssuedMessageGenerator</node>
+    <node x="190.82428920717922" y="519.9464911265555">com.dmitrymilya.visa.mailnotificationservice.generator.VisaIssueDeclinedMessageGenerator</node>
+    <node x="190.82428920717922" y="389.4148840363942">com.dmitrymilya.visa.mailnotificationservice.generator.ApplicationAcceptedMessageGenerator</node>
+    <node x="190.82428920717922" y="262.5488687397502">com.dmitrymilya.visa.mailnotificationservice.generator.MessageGenerator</node>
+    <node x="548.249009397315" y="443.18068758147496">com.dmitrymilya.visa.mailnotificationservice.facade.MailNotificationFacade</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="com.dmitrymilya.visa.mailnotificationservice.generator.ApplicationDeclinedMessageGenerator" target="com.dmitrymilya.visa.mailnotificationservice.generator.MessageGenerator" relationship="GENERALIZATION">
+      <point x="-0.25762254051244327" y="-33.57809821671674" />
+      <point x="345.0666666666668" y="626.2402505998541" />
+      <point x="142.6573333333334" y="626.2402505998541" />
+      <point x="142.6573333333334" y="287.0137083333333" />
+      <point x="195.73333333333346" y="287.0137083333333" />
+      <point x="-149.59095587384576" y="-20.048868739750162" />
+    </edge>
+    <edge source="com.dmitrymilya.visa.mailnotificationservice.consumer.MailNotificationMessageConsumer" target="com.dmitrymilya.visa.mailnotificationservice.facade.MailNotificationFacade" relationship="TO_ONE">
+      <point x="146.5" y="0.0" />
+      <point x="748.749009397315" y="329.88327694623314" />
+      <point x="748.749009397315" y="351.381982263854" />
+      <point x="749.7333333333335" y="351.381982263854" />
+      <point x="-15.015676063981573" y="-56.11402091480812" />
+    </edge>
+    <edge source="com.dmitrymilya.visa.mailnotificationservice.generator.VisaIssueDeclinedMessageGenerator" target="com.dmitrymilya.visa.mailnotificationservice.generator.MessageGenerator" relationship="GENERALIZATION">
+      <point x="-0.25762254051244327" y="-37.10240298299141" />
+      <point x="345.0666666666668" y="497.4357363163249" />
+      <point x="154.39064416109622" y="497.4357363163249" />
+      <point x="154.39064416109622" y="300.5488687397502" />
+      <point x="345.324" y="300.5488687397502" />
+      <point x="-2.8920717920755123E-4" y="-37.99986873975024" />
+    </edge>
+    <edge source="com.dmitrymilya.visa.mailnotificationservice.generator.ApplicationAcceptedMessageGenerator" target="com.dmitrymilya.visa.mailnotificationservice.generator.MessageGenerator" relationship="GENERALIZATION">
+      <point x="154.4997282982526" y="-24.943884036394216" />
+      <point x="345.3242892071792" y="402.471" />
+      <point x="345.3242892071792" y="363.98187638807224" />
+      <point x="164.82633333333334" y="363.98187638807224" />
+      <point x="164.82633333333334" y="312.33333333333337" />
+      <point x="345.324" y="312.33333333333337" />
+      <point x="-2.8920717920755123E-4" y="-37.99986873975024" />
+    </edge>
+    <edge source="com.dmitrymilya.visa.mailnotificationservice.facade.MailNotificationFacade" target="com.dmitrymilya.visa.mailnotificationservice.service.MailSenderService" relationship="TO_ONE">
+      <point x="-216.5" y="0.0" />
+      <point x="810.8535522338573" y="492.68068758147496" />
+      <point x="810.8535522338573" y="478.9148840363942" />
+      <point x="750.0823427306484" y="478.9148840363942" />
+      <point x="750.0823427306484" y="639.4914644859732" />
+      <point x="106.5" y="-48.98663373074356" />
+    </edge>
+    <edge source="com.dmitrymilya.visa.mailnotificationservice.generator.VisaIssuedMessageGenerator" target="com.dmitrymilya.visa.mailnotificationservice.generator.MessageGenerator" relationship="GENERALIZATION">
+      <point x="-2.2285653744802403E-4" y="-37.99998302859012" />
+      <point x="345.3240663506418" y="742.8217072893201" />
+      <point x="130.92400000000004" y="742.8217072893201" />
+      <point x="130.92400000000004" y="273.1470416666666" />
+      <point x="195.73333333333346" y="273.1470416666666" />
+      <point x="-149.59095587384576" y="-21.115535406416825" />
+    </edge>
+    <edge source="com.dmitrymilya.visa.mailnotificationservice.facade.MailNotificationFacade" target="com.dmitrymilya.visa.mailnotificationservice.generator.MessageGenerator" relationship="TO_MANY">
+      <point x="-198.21567606398173" y="-21.447354248141494" />
+      <point x="566.5333333333333" y="484.5666666666668" />
+      <point x="525.845477936923" y="484.5666666666668" />
+      <point x="525.845477936923" y="300.5488687397502" />
+      <point x="154.5" y="0.0" />
+    </edge>
+  </edges>
+  <settings layout="Compact" zoom="0.9375000000000001" showDependencies="true" x="574.8" y="515.1999999999998" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Fields</Category>
+    <Category>Methods</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

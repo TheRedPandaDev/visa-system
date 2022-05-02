@@ -10,6 +10,7 @@ import org.apache.ibatis.annotations.Update;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Mapper
 @Repository
@@ -28,6 +29,8 @@ public interface UserTaskMapper {
     @Update("update user_task " +
             "set decision = #{decision} " +
             "where id = #{userTaskId} and decision is null")
-    int updateDecision(@Param("userTaskId") Long userTaskId, DecisionEnum decision);
+    void updateDecision(@Param("userTaskId") Long userTaskId, DecisionEnum decision);
+
+    Optional<UserTaskEntity> getUserTaskById(@Param("id") Long id);
 
 }

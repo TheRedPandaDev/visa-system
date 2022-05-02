@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>com.dmitrymilya.visa.shared.dto.mail</OriginalElement>
+  <nodes>
+    <node x="175.1012024239958" y="20.364260848803696">com.dmitrymilya.visa.shared.model.NotificationReasonEnum</node>
+    <node x="20.629330593194254" y="-132.85364165228447">com.dmitrymilya.visa.shared.dto.mail.MailNotificationDto</node>
+    <node x="-15.870730625113254" y="20.364260848803696">com.dmitrymilya.visa.shared.dto.mail.ApplicantNameDto</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="com.dmitrymilya.visa.shared.dto.mail.MailNotificationDto" target="com.dmitrymilya.visa.shared.model.NotificationReasonEnum" relationship="TO_ONE">
+      <point x="-140.0" y="-43.94876416557847" />
+      <point x="184.16396521756127" y="-127.80240581786293" />
+      <point x="184.16396521756127" y="-45.80240581786296" />
+      <point x="342.3652665085949" y="-45.80240581786296" />
+      <point x="342.3652665085949" y="38.19759418213704" />
+      <point x="309.5665677996287" y="38.19759418213704" />
+      <point x="309.5665677996287" y="132.8642608488037" />
+      <point x="104.5" y="52.5" />
+    </edge>
+    <edge source="com.dmitrymilya.visa.shared.dto.mail.MailNotificationDto" target="com.dmitrymilya.visa.shared.dto.mail.ApplicantNameDto" relationship="TO_ONE">
+      <point x="-136.79599725986088" y="17.18697498561778" />
+      <point x="-1.6207000159595282" y="-66.66666666666669" />
+      <point x="-1.6207000159595282" y="37.95520702281874" />
+      <point x="87.0" y="-31.409053825984955" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic" zoom="1.2000000000000002" showDependencies="true" x="188.99999999999994" y="61.74999999999994" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Fields</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

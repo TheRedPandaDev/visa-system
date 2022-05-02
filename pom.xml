@@ -21,6 +21,7 @@
 		<module>shared</module>
 		<module>application-processing-service</module>
 		<module>mail-notification-service</module>
+		<module>case-decision-service</module>
 	</modules>
 	<properties>
 		<java.version>17</java.version>

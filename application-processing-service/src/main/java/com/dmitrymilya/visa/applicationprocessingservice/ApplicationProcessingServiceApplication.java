@@ -83,7 +83,8 @@ public class ApplicationProcessingServiceApplication {
 				applicantInfoDto.setContactInfo(contactInfoDto);
 
 //				applicationProcessingFacade.prepareApplicationForProcessing(visaApplicationDto);
-				Page<List<UserTaskDto>> userTasksForDecision = userTaskService.getUserTasksForDecision(1, 10);
+				Page<List<UserTaskDto>> userTasksForDecision =
+						userTaskService.getUserTasksForDecision(1, 10);
 
 				System.out.println(userTasksForDecision);
 			} catch (Exception e) {

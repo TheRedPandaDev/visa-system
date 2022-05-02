@@ -38,6 +38,7 @@ management:
 application:
   kafka:
     application-processing-topic-name: application_processing
+    mail-notification-topic-name: mail_notification
 
 mybatis:
   mapper-locations: classpath*:mapper/*Mapper.xml

@@ -7,7 +7,6 @@ import com.dmitrymilya.visa.applicationprocessingservice.entity.VisaApplicationE
 import com.dmitrymilya.visa.shared.model.DecisionEnum;
 import com.dmitrymilya.visa.shared.util.Page;
 import lombok.RequiredArgsConstructor;
-import org.apache.ibatis.javassist.NotFoundException;
 import org.modelmapper.ModelMapper;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -41,21 +40,21 @@ public class UserTaskService {
                 .setTotal(userTaskMapper.getUserTasksForDecisionCount());
     }
 
-    public void acceptApplication(Long userTaskId) {
-        updateUserTaskDecision(userTaskId, DecisionEnum.ACCEPT);
+    public UserTaskEntity acceptApplication(Long userTaskId) {
+        return updateUserTaskDecision(userTaskId, DecisionEnum.ACCEPT);
     }
 
-    public void declineApplication(Long userTaskId) {
-        updateUserTaskDecision(userTaskId, DecisionEnum.DECLINE);
+    public UserTaskEntity declineApplication(Long userTaskId) {
+        return updateUserTaskDecision(userTaskId, DecisionEnum.DECLINE);
     }
 
-    private void updateUserTaskDecision(Long userTaskId, DecisionEnum decision) {
-        int updated = userTaskMapper.updateDecision(userTaskId, decision);
+    private UserTaskEntity updateUserTaskDecision(Long userTaskId, DecisionEnum decision) {
+        UserTaskEntity userTaskEntity = userTaskMapper.getUserTaskById(userTaskId).orElseThrow(() ->
+                new ResponseStatusException(HttpStatus.NOT_FOUND,
+                        String.format("No user task up for decision with id: %s", userTaskId)));
 
-        if (updated == 0) {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND,
-                    String.format("No user task up for decision with id: %s", userTaskId));
-        }
+        userTaskMapper.updateDecision(userTaskId, decision);
+        return userTaskEntity;
     }
 
 }
