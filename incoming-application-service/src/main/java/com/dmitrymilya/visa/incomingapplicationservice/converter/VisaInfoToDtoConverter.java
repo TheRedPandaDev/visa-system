@@ -2,7 +2,7 @@ package com.dmitrymilya.visa.incomingapplicationservice.converter;
 
 import com.dmitrymilya.visa.incomingapplicationservice.model.DatePeriod;
 import com.dmitrymilya.visa.incomingapplicationservice.model.VisaInfo;
-import com.dmitrymilya.visa.shared.dto.VisaInfoDto;
+import com.dmitrymilya.visa.shared.dto.application.VisaInfoDto;
 import com.dmitrymilya.visa.shared.model.CategoryEnum;
 import com.dmitrymilya.visa.shared.model.EntryTypeEnum;
 import com.dmitrymilya.visa.shared.util.DateUtil;

@@ -1,0 +1,16 @@
+application:
+  kafka:
+    mail-notification-topic-name: mail_notification
+  mail:
+    subject: Information about your visa application
+    from: noreply@visa-system.ru
+    personal: Visa System
+
+spring:
+  kafka:
+    bootstrap-servers: localhost:29092
+    consumer:
+      auto-offset-reset: earliest
+      group-id: application_processing_service
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer

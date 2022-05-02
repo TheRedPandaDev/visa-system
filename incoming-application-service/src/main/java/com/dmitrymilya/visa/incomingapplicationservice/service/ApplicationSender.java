@@ -1,7 +1,7 @@
 package com.dmitrymilya.visa.incomingapplicationservice.service;
 
 import com.dmitrymilya.visa.incomingapplicationservice.model.VisaApplication;
-import com.dmitrymilya.visa.shared.dto.VisaApplicationDto;
+import com.dmitrymilya.visa.shared.dto.application.VisaApplicationDto;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Value;

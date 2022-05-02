@@ -1,6 +1,6 @@
 package com.dmitrymilya.visa.applicationprocessingservice.dto;
 
-import com.dmitrymilya.visa.shared.dto.VisaApplicationDto;
+import com.dmitrymilya.visa.shared.dto.application.VisaApplicationDto;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

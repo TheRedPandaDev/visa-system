@@ -2,7 +2,7 @@ package com.dmitrymilya.visa.incomingapplicationservice.converter;
 
 import com.dmitrymilya.visa.incomingapplicationservice.model.DatePeriod;
 import com.dmitrymilya.visa.incomingapplicationservice.model.PersonDocument;
-import com.dmitrymilya.visa.shared.dto.PersonDocumentDto;
+import com.dmitrymilya.visa.shared.dto.application.PersonDocumentDto;
 import com.dmitrymilya.visa.shared.util.DateUtil;
 import org.modelmapper.Converter;
 import org.modelmapper.spi.MappingContext;

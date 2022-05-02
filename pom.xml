@@ -20,12 +20,18 @@
 		<module>incoming-application-service</module>
 		<module>shared</module>
 		<module>application-processing-service</module>
+		<module>mail-notification-service</module>
 	</modules>
 	<properties>
 		<java.version>17</java.version>
 		<jaxb.version>3.1.0</jaxb.version>
 	</properties>
 	<dependencies>
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-annotations</artifactId>
+			<version>2.13.2</version>
+		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter</artifactId>

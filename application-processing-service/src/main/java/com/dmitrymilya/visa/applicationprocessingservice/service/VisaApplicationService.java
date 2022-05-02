@@ -11,7 +11,7 @@ import com.dmitrymilya.visa.applicationprocessingservice.dao.WorkOrStudyInfoMapp
 import com.dmitrymilya.visa.applicationprocessingservice.entity.ApplicantInfoEntity;
 import com.dmitrymilya.visa.applicationprocessingservice.entity.VisaApplicationEntity;
 import com.dmitrymilya.visa.applicationprocessingservice.entity.WorkOrStudyInfoEntity;
-import com.dmitrymilya.visa.shared.dto.VisaApplicationDto;
+import com.dmitrymilya.visa.shared.dto.application.VisaApplicationDto;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;

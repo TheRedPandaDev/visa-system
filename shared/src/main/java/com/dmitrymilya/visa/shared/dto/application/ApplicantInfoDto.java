@@ -1,4 +1,4 @@
-package com.dmitrymilya.visa.shared.dto;
+package com.dmitrymilya.visa.shared.dto.application;
 
 import com.dmitrymilya.visa.shared.model.SexEnum;
 import lombok.Data;

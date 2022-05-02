@@ -1,15 +1,3 @@
-#spring:
-#  kafka:
-#    bootstrap-servers: localhost:29092
-#    consumer:
-#      auto-offset-reset: earliest
-#      group-id: application_processing_service
-#      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
-#      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
-#    producer:
-#      key-serializer: org.apache.kafka.common.serialization.StringSerializer
-#      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
-
 server:
   port: 0
 
@@ -22,6 +10,16 @@ spring:
     driver-class-name: org.postgresql.Driver
     username: postgres
     password: root
+  kafka:
+    bootstrap-servers: localhost:29092
+    consumer:
+      auto-offset-reset: earliest
+      group-id: application_processing_service
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
 
 eureka:
   instance:

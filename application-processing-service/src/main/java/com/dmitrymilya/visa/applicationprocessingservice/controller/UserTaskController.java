@@ -1,6 +1,7 @@
 package com.dmitrymilya.visa.applicationprocessingservice.controller;
 
 import com.dmitrymilya.visa.applicationprocessingservice.dto.UserTaskDto;
+import com.dmitrymilya.visa.applicationprocessingservice.facade.ApplicationProcessingFacade;
 import com.dmitrymilya.visa.applicationprocessingservice.service.UserTaskService;
 import com.dmitrymilya.visa.shared.util.Page;
 import lombok.RequiredArgsConstructor;
@@ -21,6 +22,8 @@ public class UserTaskController {
 
     private final UserTaskService userTaskService;
 
+    private final ApplicationProcessingFacade applicationProcessingFacade;
+
     @GetMapping("/user-tasks")
     public ResponseEntity<Page<List<UserTaskDto>>> getUserTasksForDecision(
             @RequestParam(defaultValue = "1") Integer page, @RequestParam(defaultValue = "10") Integer size
@@ -30,14 +33,14 @@ public class UserTaskController {
 
     @PostMapping("/{userTaskId}/accept")
     public ResponseEntity<Void> acceptApplication(@PathVariable Long userTaskId) {
-        userTaskService.acceptApplication(userTaskId);
+        applicationProcessingFacade.acceptApplication(userTaskId);
 
         return ResponseEntity.ok().build();
     }
 
     @PostMapping("/{userTaskId}/decline")
     public ResponseEntity<Void> declineApplication(@PathVariable Long userTaskId) {
-        userTaskService.declineApplication(userTaskId);
+        applicationProcessingFacade.declineApplication(userTaskId);
 
         return ResponseEntity.ok().build();
     }
