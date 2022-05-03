@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>C:/Users/Dmily/Work/visa-system/incoming-application-service/src/main/java/com/dmitrymilya/visa/incomingapplicationservice</OriginalElement>
+  <nodes>
+    <node x="19.27083333333337" y="286.625">com.dmitrymilya.visa.incomingapplicationservice.converter.PersonDocumentToDtoConverter</node>
+    <node x="2.0" y="593.3333333333334">com.dmitrymilya.visa.incomingapplicationservice.converter.VisaApplicationUnmarshaller</node>
+    <node x="34.27083333333337" y="179.5">com.dmitrymilya.visa.incomingapplicationservice.converter.VisaApplicationToDtoConverter</node>
+    <node x="-77.0" y="370.75">com.dmitrymilya.visa.incomingapplicationservice.converter.VisaInfoToDtoConverter</node>
+    <node x="325.71666666666647" y="432.87499999999994">com.dmitrymilya.visa.incomingapplicationservice.service.ApplicationSender</node>
+    <node x="49.27083333333337" y="72.375">com.dmitrymilya.visa.incomingapplicationservice.converter.ApplicantInfoToDtoConverter</node>
+    <node x="-72.0" y="454.875">com.dmitrymilya.visa.incomingapplicationservice.consumer.EpguVisaApplicationSmevAdapter</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="com.dmitrymilya.visa.incomingapplicationservice.consumer.EpguVisaApplicationSmevAdapter" target="com.dmitrymilya.visa.incomingapplicationservice.service.ApplicationSender" relationship="TO_ONE">
+      <point x="162.08000000000004" y="18.237500000000182" />
+      <point x="271.08000000000004" y="509.5166666666667" />
+      <point x="336.9466666666667" y="509.5166666666667" />
+      <point x="-172.26999999999975" y="-3.3708333333332234" />
+    </edge>
+    <edge source="com.dmitrymilya.visa.incomingapplicationservice.consumer.EpguVisaApplicationSmevAdapter" target="com.dmitrymilya.visa.incomingapplicationservice.converter.VisaApplicationUnmarshaller" relationship="TO_ONE">
+      <point x="-142.29333333333324" y="17.37083333333328" />
+      <point x="-33.29333333333324" y="515.375" />
+      <point x="146.0" y="515.375" />
+      <point x="0.0" y="-38.5" />
+    </edge>
+  </edges>
+  <settings layout="Compact" zoom="0.9230769230769232" showDependencies="true" x="353.3124999999998" y="362.37499999999994" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Fields</Category>
+    <Category>Methods</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>C:/Users/Dmily/Work/visa-system/case-decision-service/src/main/java/com/dmitrymilya/visa/casedecisionservice</OriginalElement>
+  <nodes>
+    <node x="2270.0511383609237" y="-15.0">com.dmitrymilya.visa.casedecisionservice.dao.UserTaskMapper</node>
+    <node x="1589.5217657878604" y="592.0">com.dmitrymilya.visa.casedecisionservice.facade.VisaCaseFacade</node>
+    <node x="2081.247574766673" y="896.5">com.dmitrymilya.visa.casedecisionservice.controller.UserTaskController</node>
+    <node x="1507.9534028203561" y="45.330165542611894">com.dmitrymilya.visa.shared.dao.ContactInfoMapper</node>
+    <node x="1515.225260576334" y="896.5">com.dmitrymilya.visa.casedecisionservice.service.ExternalInquiriesService</node>
+    <node x="1599.9534028203561" y="143.11618638871846">com.dmitrymilya.visa.shared.dao.ApplicantInfoMapper</node>
+    <node x="1335.9534028203561" y="276.0">com.dmitrymilya.visa.casedecisionservice.service.VisaCaseService</node>
+    <node x="1698.5217657878604" y="276.0">com.dmitrymilya.visa.casedecisionservice.service.VisaCaseSender</node>
+    <node x="1284.8850398528518" y="45.330165542611894">com.dmitrymilya.visa.casedecisionservice.dao.VisaCaseMapper</node>
+    <node x="2207.0885925471757" y="735.5437155119557">com.dmitrymilya.visa.casedecisionservice.consumer.ApplicationMessageConsumer</node>
+    <node x="1747.0217657878604" y="45.330165542611894">com.dmitrymilya.visa.shared.dao.WorkOrStudyInfoMapper</node>
+    <node x="2506.898319231556" y="321.0">com.dmitrymilya.visa.casedecisionservice.dao.ExternalInquiryResponseMapper</node>
+    <node x="1847.5217657878604" y="143.11618638871846">com.dmitrymilya.visa.shared.dao.VisaInfoMapper</node>
+    <node x="1358.3850398528516" y="143.11618638871846">com.dmitrymilya.visa.casedecisionservice.dao.VisitAddressMapper</node>
+    <node x="2018.0901287553647" y="45.330165542611894">com.dmitrymilya.visa.shared.dao.PersonDocumentMapper</node>
+    <node x="2058.6173145309626" y="276.0">com.dmitrymilya.visa.casedecisionservice.service.MailNotificationRequestSender</node>
+    <node x="1523.995800122625" y="1029.5">com.dmitrymilya.visa.casedecisionservice.feign.ExternalInquiriesServiceFeignClient</node>
+    <node x="2066.0901287553647" y="143.11618638871846">com.dmitrymilya.visa.shared.dao.AddressMapper</node>
+    <node x="2315.8192819674355" y="436.0">com.dmitrymilya.visa.casedecisionservice.service.UserTaskService</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="com.dmitrymilya.visa.casedecisionservice.facade.VisaCaseFacade" target="com.dmitrymilya.visa.casedecisionservice.service.VisaCaseSender" relationship="TO_ONE">
+      <point x="0.0" y="-126.5" />
+      <point x="0.0" y="93.5" />
+    </edge>
+    <edge source="com.dmitrymilya.visa.casedecisionservice.service.VisaCaseService" target="com.dmitrymilya.visa.casedecisionservice.dao.VisaCaseMapper" relationship="TO_ONE">
+      <point x="-2.2737367544323206E-13" y="-126.5" />
+      <point x="1499.453402820356" y="240.0" />
+      <point x="1340.7166891477627" y="240.0" />
+      <point x="-37.6683507050891" y="22.33852851011642" />
+    </edge>
+    <edge source="com.dmitrymilya.visa.casedecisionservice.service.UserTaskService" target="com.dmitrymilya.visa.casedecisionservice.dao.UserTaskMapper" relationship="TO_ONE">
+      <point x="-28.97202602357038" y="-131.3454445125691" />
+      <point x="2494.347255943865" y="240.0" />
+      <point x="2460.5511383609237" y="240.0" />
+      <point x="0.0" y="115.0" />
+    </edge>
+    <edge source="com.dmitrymilya.visa.casedecisionservice.facade.VisaCaseFacade" target="com.dmitrymilya.visa.casedecisionservice.service.UserTaskService" relationship="TO_ONE">
+      <point x="0.0" y="-126.5" />
+      <point x="1864.5217657878604" y="571.0" />
+      <point x="2523.3192819674355" y="571.0" />
+      <point x="0.0" y="137.5" />
+    </edge>
+    <edge source="com.dmitrymilya.visa.casedecisionservice.service.VisaCaseService" target="com.dmitrymilya.visa.shared.dao.PersonDocumentMapper" relationship="TO_ONE">
+      <point x="-2.2737367544323206E-13" y="-126.5" />
+      <point x="1499.453402820356" y="240.0" />
+      <point x="2049.388571428572" y="240.0" />
+      <point x="-84.70155732679268" y="31.056811771919" />
+    </edge>
+    <edge source="com.dmitrymilya.visa.casedecisionservice.service.UserTaskService" target="com.dmitrymilya.visa.casedecisionservice.dao.ExternalInquiryResponseMapper" relationship="TO_ONE">
+      <point x="0.0" y="-137.5" />
+      <point x="2523.3192819674355" y="342.12846106683014" />
+      <point x="2581.203850398529" y="342.12846106683014" />
+      <point x="-60.694468833026804" y="-17.856100551808822" />
+    </edge>
+    <edge source="com.dmitrymilya.visa.casedecisionservice.service.VisaCaseService" target="com.dmitrymilya.visa.shared.dao.ContactInfoMapper" relationship="TO_ONE">
+      <point x="-2.2737367544323206E-13" y="-126.5" />
+      <point x="1499.453402820356" y="240.0" />
+      <point x="1581.0922133660338" y="240.0" />
+      <point x="-28.361189454322357" y="23.583997547516788" />
+    </edge>
+    <edge source="com.dmitrymilya.visa.casedecisionservice.consumer.ApplicationMessageConsumer" target="com.dmitrymilya.visa.casedecisionservice.facade.VisaCaseFacade" relationship="TO_ONE">
+      <point x="0.0" y="-38.5" />
+      <point x="2353.0885925471757" y="839.0217486204782" />
+      <point x="2108.805179167518" y="839.0217486204782" />
+      <point x="2108.805179167518" y="845.0" />
+      <point x="0.0" y="126.5" />
+    </edge>
+    <edge source="com.dmitrymilya.visa.casedecisionservice.facade.VisaCaseFacade" target="com.dmitrymilya.visa.casedecisionservice.service.ExternalInquiriesService" relationship="TO_ONE">
+      <point x="0.0" y="-126.5" />
+      <point x="1864.5217657878604" y="669.9785407725321" />
+      <point x="1770.725260576334" y="669.9785407725321" />
+      <point x="0.0" y="38.5" />
+    </edge>
+    <edge source="com.dmitrymilya.visa.casedecisionservice.facade.VisaCaseFacade" target="com.dmitrymilya.visa.casedecisionservice.service.MailNotificationRequestSender" relationship="TO_ONE">
+      <point x="0.0" y="-126.5" />
+      <point x="1864.5217657878604" y="561.0" />
+      <point x="2258.1173145309626" y="561.0" />
+      <point x="0.0" y="49.5" />
+    </edge>
+    <edge source="com.dmitrymilya.visa.casedecisionservice.service.VisaCaseService" target="com.dmitrymilya.visa.shared.dao.ApplicantInfoMapper" relationship="TO_ONE">
+      <point x="-2.2737367544323206E-13" y="-126.5" />
+      <point x="1499.453402820356" y="240.0" />
+      <point x="1705.9534028203561" y="240.0" />
+      <point x="0.0" y="27.0" />
+    </edge>
+    <edge source="com.dmitrymilya.visa.casedecisionservice.service.VisaCaseService" target="com.dmitrymilya.visa.shared.dao.AddressMapper" relationship="TO_ONE">
+      <point x="-2.2737367544323206E-13" y="-126.5" />
+      <point x="1499.453402820356" y="240.0" />
+      <point x="2158.0901287553647" y="240.0" />
+      <point x="0.0" y="27.0" />
+    </edge>
+    <edge source="com.dmitrymilya.visa.casedecisionservice.controller.UserTaskController" target="com.dmitrymilya.visa.casedecisionservice.service.UserTaskService" relationship="TO_ONE">
+      <point x="0.0" y="-93.5" />
+      <point x="2405.247574766673" y="838.0003985285102" />
+      <point x="2523.3192819674355" y="838.0003985285102" />
+      <point x="0.0" y="137.5" />
+    </edge>
+    <edge source="com.dmitrymilya.visa.casedecisionservice.controller.UserTaskController" target="com.dmitrymilya.visa.casedecisionservice.facade.VisaCaseFacade" relationship="TO_ONE">
+      <point x="0.0" y="-93.5" />
+      <point x="2405.247574766673" y="871.0" />
+      <point x="1864.5217657878604" y="871.0" />
+      <point x="0.0" y="126.5" />
+    </edge>
+    <edge source="com.dmitrymilya.visa.casedecisionservice.service.VisaCaseService" target="com.dmitrymilya.visa.casedecisionservice.dao.VisitAddressMapper" relationship="TO_ONE">
+      <point x="-2.2737367544323206E-13" y="-126.5" />
+      <point x="1499.453402820356" y="240.0" />
+      <point x="1461.3850398528516" y="240.0" />
+      <point x="0.0" y="27.0" />
+    </edge>
+    <edge source="com.dmitrymilya.visa.casedecisionservice.service.VisaCaseService" target="com.dmitrymilya.visa.shared.dao.VisaInfoMapper" relationship="TO_ONE">
+      <point x="-2.2737367544323206E-13" y="-126.5" />
+      <point x="1499.453402820356" y="240.0" />
+      <point x="1939.0217657878604" y="240.0" />
+      <point x="0.0" y="27.0" />
+    </edge>
+    <edge source="com.dmitrymilya.visa.casedecisionservice.service.VisaCaseService" target="com.dmitrymilya.visa.shared.dao.WorkOrStudyInfoMapper" relationship="TO_ONE">
+      <point x="-2.2737367544323206E-13" y="-126.5" />
+      <point x="1499.453402820356" y="240.0" />
+      <point x="1831.4314898835075" y="240.0" />
+      <point x="-33.09027590435289" y="26.074935622317525" />
+    </edge>
+    <edge source="com.dmitrymilya.visa.casedecisionservice.service.ExternalInquiriesService" target="com.dmitrymilya.visa.casedecisionservice.feign.ExternalInquiriesServiceFeignClient" relationship="TO_ONE">
+      <point x="5.270539546291047" y="40.31814837522961" />
+      <point x="0.0" y="27.0" />
+    </edge>
+    <edge source="com.dmitrymilya.visa.casedecisionservice.facade.VisaCaseFacade" target="com.dmitrymilya.visa.casedecisionservice.service.VisaCaseService" relationship="TO_ONE">
+      <point x="0.0" y="-126.5" />
+      <point x="1864.5217657878604" y="561.0" />
+      <point x="1499.4534028203561" y="561.0" />
+      <point x="0.0" y="126.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic" zoom="0.5138626339004412" showDependencies="true" x="2094.73022685469" y="473.3862660944203" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Fields</Category>
+    <Category>Methods</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>C:/Users/Dmily/Work/visa-system/application-processing-service/src/main/java/com/dmitrymilya/visa/applicationprocessingservice</OriginalElement>
+  <nodes>
+    <node x="849.0" y="760.25">com.dmitrymilya.visa.applicationprocessingservice.service.MailNotificationRequestSender</node>
+    <node x="805.5" y="454.5">com.dmitrymilya.visa.applicationprocessingservice.dao.VisitAddressMapper</node>
+    <node x="823.5" y="640.0">com.dmitrymilya.visa.applicationprocessingservice.consumer.ApplicationMessageConsumer</node>
+    <node x="1034.5" y="454.5">com.dmitrymilya.visa.shared.dao.ContactInfoMapper</node>
+    <node x="765.5" y="-26.5">com.dmitrymilya.visa.applicationprocessingservice.service.VisaApplicationService</node>
+    <node x="366.0" y="606.5">com.dmitrymilya.visa.applicationprocessingservice.facade.ApplicationProcessingFacade</node>
+    <node x="849.0" y="935.1082529474811">com.dmitrymilya.visa.applicationprocessingservice.service.ApplicationSender</node>
+    <node x="1050.5" y="360.5">com.dmitrymilya.visa.shared.dao.ApplicantInfoMapper</node>
+    <node x="805.5" y="257.87727759914253">com.dmitrymilya.visa.shared.dao.WorkOrStudyInfoMapper</node>
+    <node x="1063.5" y="266.5">com.dmitrymilya.visa.shared.dao.PersonDocumentMapper</node>
+    <node x="192.1334405144695" y="360.5">com.dmitrymilya.visa.applicationprocessingservice.service.UserTaskService</node>
+    <node x="1012.5" y="548.5">com.dmitrymilya.visa.shared.dao.VisaInfoMapper</node>
+    <node x="275.805466237942" y="848.5">com.dmitrymilya.visa.applicationprocessingservice.controller.UserTaskController</node>
+    <node x="805.5" y="360.5">com.dmitrymilya.visa.applicationprocessingservice.dao.VisaApplicationMapper</node>
+    <node x="805.5" y="548.5">com.dmitrymilya.visa.shared.dao.AddressMapper</node>
+    <node x="209.1334405144695" y="159.5">com.dmitrymilya.visa.applicationprocessingservice.dao.UserTaskMapper</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="com.dmitrymilya.visa.applicationprocessingservice.facade.ApplicationProcessingFacade" target="com.dmitrymilya.visa.applicationprocessingservice.service.VisaApplicationService" relationship="TO_ONE">
+      <point x="189.0" y="-32.5" />
+      <point x="773.5" y="667.5" />
+      <point x="-181.5" y="126.5" />
+    </edge>
+    <edge source="com.dmitrymilya.visa.applicationprocessingservice.service.VisaApplicationService" target="com.dmitrymilya.visa.applicationprocessingservice.dao.VisitAddressMapper" relationship="TO_ONE">
+      <point x="90.83333333333348" y="126.5" />
+      <point x="1045.8333333333335" y="429.0" />
+      <point x="910.0" y="429.0" />
+      <point x="0.0" y="-27.0" />
+    </edge>
+    <edge source="com.dmitrymilya.visa.applicationprocessingservice.service.VisaApplicationService" target="com.dmitrymilya.visa.shared.dao.ContactInfoMapper" relationship="TO_ONE">
+      <point x="93.16666666666652" y="126.5" />
+      <point x="-89.33333333333348" y="-27.0" />
+    </edge>
+    <edge source="com.dmitrymilya.visa.applicationprocessingservice.controller.UserTaskController" target="com.dmitrymilya.visa.applicationprocessingservice.facade.ApplicationProcessingFacade" relationship="TO_ONE">
+      <point x="0.0" y="-71.5" />
+      <point x="534.305466237942" y="821.0" />
+      <point x="555.0" y="821.0" />
+      <point x="0.0" y="93.5" />
+    </edge>
+    <edge source="com.dmitrymilya.visa.applicationprocessingservice.service.VisaApplicationService" target="com.dmitrymilya.visa.shared.dao.PersonDocumentMapper" relationship="TO_ONE">
+      <point x="187.5" y="126.5" />
+      <point x="-38.5" y="-27.0" />
+    </edge>
+    <edge source="com.dmitrymilya.visa.applicationprocessingservice.service.VisaApplicationService" target="com.dmitrymilya.visa.shared.dao.ApplicantInfoMapper" relationship="TO_ONE">
+      <point x="106.5" y="126.5" />
+      <point x="-96.5" y="-27.0" />
+    </edge>
+    <edge source="com.dmitrymilya.visa.applicationprocessingservice.controller.UserTaskController" target="com.dmitrymilya.visa.applicationprocessingservice.service.UserTaskService" relationship="TO_ONE">
+      <point x="-258.5" y="0.0" />
+      <point x="241.91854233654874" y="920.0" />
+      <point x="-159.71489817792076" y="83.66559485530564" />
+    </edge>
+    <edge source="com.dmitrymilya.visa.applicationprocessingservice.consumer.ApplicationMessageConsumer" target="com.dmitrymilya.visa.applicationprocessingservice.facade.ApplicationProcessingFacade" relationship="TO_ONE">
+      <point x="-179.0" y="0.0" />
+      <point x="910.0" y="678.5" />
+      <point x="910.0" y="700.0" />
+      <point x="189.0" y="0.0" />
+    </edge>
+    <edge source="com.dmitrymilya.visa.applicationprocessingservice.facade.ApplicationProcessingFacade" target="com.dmitrymilya.visa.applicationprocessingservice.service.MailNotificationRequestSender" relationship="TO_ONE">
+      <point x="189.0" y="27.5" />
+      <point x="1051.5" y="727.5" />
+      <point x="-0.0" y="-71.5" />
+    </edge>
+    <edge source="com.dmitrymilya.visa.applicationprocessingservice.facade.ApplicationProcessingFacade" target="com.dmitrymilya.visa.applicationprocessingservice.service.ApplicationSender" relationship="TO_ONE">
+      <point x="189.0" y="37.5" />
+      <point x="815.5" y="737.5" />
+      <point x="815.5" y="1023.0" />
+      <point x="1030.5" y="1023.0" />
+      <point x="-0.0" y="-60.5" />
+    </edge>
+    <edge source="com.dmitrymilya.visa.applicationprocessingservice.service.UserTaskService" target="com.dmitrymilya.visa.applicationprocessingservice.dao.UserTaskMapper" relationship="TO_ONE">
+      <point x="0.0" y="-93.5" />
+      <point x="0.0" y="71.0" />
+    </edge>
+    <edge source="com.dmitrymilya.visa.applicationprocessingservice.service.VisaApplicationService" target="com.dmitrymilya.visa.applicationprocessingservice.dao.VisaApplicationMapper" relationship="TO_ONE">
+      <point x="-157.5" y="126.5" />
+      <point x="797.5" y="322.5" />
+      <point x="918.0" y="322.5" />
+      <point x="0.0" y="-27.0" />
+    </edge>
+    <edge source="com.dmitrymilya.visa.applicationprocessingservice.service.VisaApplicationService" target="com.dmitrymilya.visa.shared.dao.VisaInfoMapper" relationship="TO_ONE">
+      <point x="-165.5" y="126.5" />
+      <point x="789.5" y="523.5" />
+      <point x="1105.5" y="523.5" />
+      <point x="-0.0" y="-27.0" />
+    </edge>
+    <edge source="com.dmitrymilya.visa.applicationprocessingservice.facade.ApplicationProcessingFacade" target="com.dmitrymilya.visa.applicationprocessingservice.service.UserTaskService" relationship="TO_ONE">
+      <point x="-189.0" y="0.0" />
+      <point x="315.25" y="700.0" />
+      <point x="315.25" y="454.0" />
+      <point x="209.5" y="0.0" />
+    </edge>
+    <edge source="com.dmitrymilya.visa.applicationprocessingservice.service.VisaApplicationService" target="com.dmitrymilya.visa.shared.dao.WorkOrStudyInfoMapper" relationship="TO_ONE">
+      <point x="-30.5" y="126.5" />
+      <point x="0.0" y="-27.0" />
+    </edge>
+    <edge source="com.dmitrymilya.visa.applicationprocessingservice.service.VisaApplicationService" target="com.dmitrymilya.visa.shared.dao.AddressMapper" relationship="TO_ONE">
+      <point x="-173.5" y="126.5" />
+      <point x="781.5" y="533.5" />
+      <point x="899.0" y="533.5" />
+      <point x="-0.0" y="-27.0" />
+    </edge>
+  </edges>
+  <settings layout="Compact" zoom="0.5798632691112492" showDependencies="true" x="848.1345123258307" y="492.1109324758843" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Fields</Category>
+    <Category>Methods</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

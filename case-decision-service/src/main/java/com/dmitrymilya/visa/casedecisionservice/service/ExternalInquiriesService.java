@@ -8,6 +8,7 @@ import com.dmitrymilya.visa.shared.model.ExternalInquiryOrganizationEnum;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 @Service
@@ -16,13 +17,16 @@ public class ExternalInquiriesService {
 
     private final ExternalInquiriesServiceFeignClient externalInquiriesServiceFeignClient;
 
+    private final HttpServletRequest request;
+
     public List<ExternalInquiryResponseDto> makeExternalInquiries(ApplicantInfoDto applicantInfoDto,
                                                                   List<ExternalInquiryOrganizationEnum> organizations) {
         ExternalInquiriesRequestDto externalInquiriesRequestDto = new ExternalInquiriesRequestDto();
         externalInquiriesRequestDto.setApplicantInfoDto(applicantInfoDto);
         externalInquiriesRequestDto.setExternalInquiryOrganizations(organizations);
 
-        return externalInquiriesServiceFeignClient.makeExternalInquiries(externalInquiriesRequestDto);
+        return externalInquiriesServiceFeignClient.makeExternalInquiries(request.getHeader("Authorization"),
+                externalInquiriesRequestDto);
     }
 
 }

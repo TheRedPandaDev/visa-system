@@ -3,7 +3,7 @@ server:
 
 spring:
   application:
-    name: application-processing-service
+    name: case-decision-service
   datasource:
     url: jdbc:postgresql://localhost:5432/case_decision
     type: com.zaxxer.hikari.HikariDataSource
