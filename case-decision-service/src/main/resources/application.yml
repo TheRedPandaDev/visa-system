@@ -5,7 +5,7 @@ spring:
   application:
     name: application-processing-service
   datasource:
-    url: jdbc:postgresql://localhost:5432/application_processing
+    url: jdbc:postgresql://localhost:5432/case_decision
     type: com.zaxxer.hikari.HikariDataSource
     driver-class-name: org.postgresql.Driver
     username: postgres
@@ -37,9 +37,13 @@ management:
 
 application:
   kafka:
-    application-processing-topic-name: application_processing
     mail-notification-topic-name: mail_notification
     case-decision-topic-name: case_decision
+    visa-issue-topic-name: visa_issue
+    case-resolution-topic-name: case_resolution
 
 mybatis:
   mapper-locations: classpath*:mapper/*Mapper.xml
+
+feign:
+  gateway-service: http://localhost:2023

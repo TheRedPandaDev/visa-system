@@ -1,4 +1,4 @@
-package com.dmitrymilya.visa.applicationprocessingservice.entity;
+package com.dmitrymilya.visa.casedecisionservice.entity;
 
 import com.dmitrymilya.visa.shared.entity.ApplicantInfoEntity;
 import com.dmitrymilya.visa.shared.entity.VisaInfoEntity;
@@ -6,12 +6,13 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.OffsetDateTime;
 import java.util.List;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class VisaApplicationEntity {
+public class VisaCaseEntity {
 
     private Long id;
 
@@ -26,5 +27,9 @@ public class VisaApplicationEntity {
     private VisaInfoEntity visaInfo;
 
     private byte[] attachedPhoto;
+
+    private List<ExternalInquiryResponseEntity> externalInquiryResponses;
+
+    private OffsetDateTime createDttm;
 
 }

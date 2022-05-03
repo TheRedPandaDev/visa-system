@@ -1,8 +1,8 @@
-package com.dmitrymilya.visa.applicationprocessingservice.service;
+package com.dmitrymilya.visa.casedecisionservice.service;
 
-import com.dmitrymilya.visa.shared.entity.ApplicantInfoEntity;
 import com.dmitrymilya.visa.shared.dto.mail.ApplicantNameDto;
 import com.dmitrymilya.visa.shared.dto.mail.MailNotificationDto;
+import com.dmitrymilya.visa.shared.entity.ApplicantInfoEntity;
 import com.dmitrymilya.visa.shared.model.NotificationReasonEnum;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
@@ -18,15 +18,7 @@ public class MailNotificationRequestSender {
     @Value("${application.kafka.mail-notification-topic-name:mail_notification}")
     private String mailNotificationTopicName;
 
-    public void sendApplicationAcceptedNotificationRequest(ApplicantInfoEntity applicantInfoEntity) {
-        sendRequest(applicantInfoEntity, NotificationReasonEnum.APPLICATION_ACCEPTED);
-    }
-
-    public void sendApplicationDeclinedNotificationRequest(ApplicantInfoEntity applicantInfoEntity) {
-        sendRequest(applicantInfoEntity, NotificationReasonEnum.APPLICATION_DECLINED);
-    }
-
-    private void sendRequest(ApplicantInfoEntity applicantInfoEntity, NotificationReasonEnum notificationReason) {
+    public void sendVisaIssueDeclinedNotificationRequest(ApplicantInfoEntity applicantInfoEntity) {
         ApplicantNameDto applicantNameDto = new ApplicantNameDto();
         applicantNameDto.setLastName(applicantInfoEntity.getLastName());
         applicantNameDto.setFirstName(applicantNameDto.getFirstName());
@@ -35,7 +27,7 @@ public class MailNotificationRequestSender {
         MailNotificationDto mailNotificationDto = new MailNotificationDto();
         mailNotificationDto.setApplicantName(applicantNameDto);
         mailNotificationDto.setEmail(applicantInfoEntity.getContactInfo().getEmail());
-        mailNotificationDto.setNotificationReason(notificationReason);
+        mailNotificationDto.setNotificationReason(NotificationReasonEnum.VISA_ISSUE_DECLINED);
 
         kafkaTemplate.send(mailNotificationTopicName, mailNotificationDto);
     }

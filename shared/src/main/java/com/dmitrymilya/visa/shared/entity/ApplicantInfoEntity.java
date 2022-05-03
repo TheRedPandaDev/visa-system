@@ -1,5 +1,9 @@
-package com.dmitrymilya.visa.applicationprocessingservice.entity;
+package com.dmitrymilya.visa.shared.entity;
 
+import com.dmitrymilya.visa.shared.entity.AddressEntity;
+import com.dmitrymilya.visa.shared.entity.ContactInfoEntity;
+import com.dmitrymilya.visa.shared.entity.PersonDocumentEntity;
+import com.dmitrymilya.visa.shared.entity.WorkOrStudyInfoEntity;
 import com.dmitrymilya.visa.shared.model.SexEnum;
 import lombok.AllArgsConstructor;
 import lombok.Data;

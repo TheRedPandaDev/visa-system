@@ -1,42 +1,45 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.dmitrymilya.visa.applicationprocessingservice.dao.UserTaskMapper">
-    <resultMap id="userTask" type="com.dmitrymilya.visa.applicationprocessingservice.entity.UserTaskEntity"
+<mapper namespace="com.dmitrymilya.visa.casedecisionservice.dao.UserTaskMapper">
+    <resultMap id="userTask" type="com.dmitrymilya.visa.casedecisionservice.entity.UserTaskEntity"
                autoMapping="true">
         <id property="id" column="ut_id"/>
-        <result property="visaApplicationId" column="ut_visaApplicationId"/>
+        <result property="visaCaseId" column="ut_visaCaseId"/>
         <result property="decision" column="ut_decision"/>
         <result property="createDttm" column="ut_createDttm"/>
-        <association property="visaApplication"
-                     javaType="com.dmitrymilya.visa.applicationprocessingservice.entity.VisaApplicationEntity"
-                     autoMapping="true" columnPrefix="va_">
+        <association property="visaCase"
+                     javaType="com.dmitrymilya.visa.casedecisionservice.entity.VisaCaseEntity"
+                     autoMapping="true" columnPrefix="vc_">
             <id property="id" column="id"/>
             <collection property="visitPoints" column="id"
-                        ofType="com.dmitrymilya.visa.applicationprocessingservice.entity.VisitAddressEntity"
+                        ofType="com.dmitrymilya.visa.casedecisionservice.entity.VisitAddressEntity"
                         select="getVisitPoints" fetchType="eager" autoMapping="true"/>
+            <collection property="externalInquiryResponses" column="id"
+                        ofType="com.dmitrymilya.visa.casedecisionservice.entity.ExternalInquiryResponseEntity"
+                        select="getExternalInquiryResponses" fetchType="eager" autoMapping="true"/>
         </association>
-        <association property="visaApplication.visaInfo"
+        <association property="visaCase.visaInfo"
                      javaType="com.dmitrymilya.visa.shared.entity.VisaInfoEntity"
                      autoMapping="true" columnPrefix="vi_"/>
-        <association property="visaApplication.applicantInfo"
+        <association property="visaCase.applicantInfo"
                      javaType="com.dmitrymilya.visa.shared.entity.ApplicantInfoEntity"
                      autoMapping="true" columnPrefix="ai_"/>
-        <association property="visaApplication.applicantInfo.address"
+        <association property="visaCase.applicantInfo.address"
                      javaType="com.dmitrymilya.visa.shared.entity.AddressEntity"
                      autoMapping="true" columnPrefix="a_"/>
-        <association property="visaApplication.applicantInfo.contactInfo"
+        <association property="visaCase.applicantInfo.contactInfo"
                      javaType="com.dmitrymilya.visa.shared.entity.ContactInfoEntity"
                      autoMapping="true" columnPrefix="ci_"/>
-        <association property="visaApplication.applicantInfo.personDocument"
+        <association property="visaCase.applicantInfo.personDocument"
                      javaType="com.dmitrymilya.visa.shared.entity.PersonDocumentEntity"
                      autoMapping="true" columnPrefix="pd_"/>
-        <association property="visaApplication.applicantInfo.workOrStudyInfo"
+        <association property="visaCase.applicantInfo.workOrStudyInfo"
                      javaType="com.dmitrymilya.visa.shared.entity.WorkOrStudyInfoEntity"
                      autoMapping="true" columnPrefix="wosi_"/>
-        <association property="visaApplication.applicantInfo.workOrStudyInfo.address"
+        <association property="visaCase.applicantInfo.workOrStudyInfo.address"
                      javaType="com.dmitrymilya.visa.shared.entity.AddressEntity"
                      autoMapping="true" columnPrefix="wosia_"/>
-        <association property="visaApplication.applicantInfo.workOrStudyInfo.contactInfo"
+        <association property="visaCase.applicantInfo.workOrStudyInfo.contactInfo"
                      javaType="com.dmitrymilya.visa.shared.entity.ContactInfoEntity"
                      autoMapping="true" columnPrefix="wosic_"/>
     </resultMap>
@@ -46,23 +49,52 @@
         select visit_a.id id,
                visit_a.city city,
                visit_a.region region,
-               visit_a.visa_application_id visaApplicationId
+               visit_a.visa_case_id visaCaseId
             from visit_address visit_a
-        where visit_a.visa_application_id = #{va_id}
+        where visit_a.visa_case_id = #{va_id}
+    </select>
+
+    <select id="getExternalInquiryResponses"
+            resultType="com.dmitrymilya.visa.casedecisionservice.entity.ExternalInquiryResponseEntity">
+        select ext_inq_res.id id,
+               ext_inq_res.from_value "from",
+               ext_inq_res.inquiry_response_status inquiryResponseStatus,
+               ext_inq_res.answer answer,
+               ext_inq_res.visa_case_id visaCaseId
+        from external_inquiry_response ext_inq_res
+        where ext_inq_res.visa_case_id = #{va_id}
     </select>
 
     <select id="getUserTasksForDecision" resultMap="userTask">
         <include refid="selectUserTasksForDecision"/>
+        where ut_readyForDecision is true
         limit #{limit} offset #{offset}
     </select>
 
     <select id="getUserTasksForDecisionCount" resultType="java.lang.Long">
         select count(*)
         from user_task
+        where decision is null and ready_for_decision is true
+    </select>
+
+    <select id="getUserTaskForDecisionById" resultMap="userTask">
+        <include refid="selectUserTasksForDecision"/>
+        where ut_id = #{id} and ut_readyForDecision is true
+    </select>
+
+    <select id="getUserTasksForInquiries"
+            resultMap="userTask">
+        <include refid="selectUserTasksForDecision"/>
+        where ut_id = #{id}
+    </select>
+
+    <select id="getUserTasksForInquiriesCount" resultType="java.lang.Long">
+        select count(*)
+        from user_task
         where decision is null
     </select>
 
-    <select id="getUserTaskById" resultMap="userTask">
+    <select id="getUserTaskForInquiriesById" resultMap="userTask">
         <include refid="selectUserTasksForDecision"/>
         where ut_id = #{id}
     </select>
@@ -70,14 +102,16 @@
     <sql id="selectUserTasksForDecision">
         select
             ut.id ut_id,
-            ut.visa_application_id ut_visaApplicationId,
+            ut.visa_case_id ut_visaCaseId,
             ut.decision ut_decision,
             ut.create_dttm ut_createDttm,
+            ut.ready_for_decision ut_readyForDecision,
 
-            va.id va_id,
-            va.applicant_info_id va_applicantInfoId,
-            va.attached_photo va_attachedPhoto,
-            va.visa_info_id va_visaInfoId,
+            vc.id vc_id,
+            vc.applicant_info_id vc_applicantInfoId,
+            vc.attached_photo vc_attachedPhoto,
+            vc.visa_info_id vc_visaInfoId,
+            vc.create_dttm vc_createDttm,
 
             vi.id vi_id,
             vi.category_type vi_category,
@@ -138,7 +172,7 @@
             wosic.email wosic_email,
             wosic.phone_number wosic_phoneNumber
         from user_task ut
-                 inner join visa_application va on (ut.decision is null and va.id = ut.visa_application_id)
+                 inner join visa_case vc on (ut.decision is null and vc.id = ut.visa_case_id)
                  inner join visa_info vi on vi.id = va.visa_info_id
                  inner join applicant_info ai on ai.id = va.applicant_info_id
                  inner join address a on a.id = ai.address_id

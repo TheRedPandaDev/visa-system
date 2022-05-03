@@ -1,17 +1,17 @@
-package com.dmitrymilya.visa.applicationprocessingservice.service;
+package com.dmitrymilya.visa.casedecisionservice.service;
 
+import com.dmitrymilya.visa.casedecisionservice.dao.VisaCaseMapper;
+import com.dmitrymilya.visa.casedecisionservice.dao.VisitAddressMapper;
+import com.dmitrymilya.visa.casedecisionservice.entity.VisaCaseEntity;
 import com.dmitrymilya.visa.shared.dao.AddressMapper;
 import com.dmitrymilya.visa.shared.dao.ApplicantInfoMapper;
 import com.dmitrymilya.visa.shared.dao.ContactInfoMapper;
 import com.dmitrymilya.visa.shared.dao.PersonDocumentMapper;
-import com.dmitrymilya.visa.applicationprocessingservice.dao.VisaApplicationMapper;
 import com.dmitrymilya.visa.shared.dao.VisaInfoMapper;
-import com.dmitrymilya.visa.applicationprocessingservice.dao.VisitAddressMapper;
 import com.dmitrymilya.visa.shared.dao.WorkOrStudyInfoMapper;
-import com.dmitrymilya.visa.shared.entity.ApplicantInfoEntity;
-import com.dmitrymilya.visa.applicationprocessingservice.entity.VisaApplicationEntity;
-import com.dmitrymilya.visa.shared.entity.WorkOrStudyInfoEntity;
 import com.dmitrymilya.visa.shared.dto.application.VisaApplicationDto;
+import com.dmitrymilya.visa.shared.entity.ApplicantInfoEntity;
+import com.dmitrymilya.visa.shared.entity.WorkOrStudyInfoEntity;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
@@ -19,7 +19,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @RequiredArgsConstructor
-public class VisaApplicationService {
+public class VisaCaseService {
 
     private final ModelMapper modelMapper;
 
@@ -35,15 +35,15 @@ public class VisaApplicationService {
 
     private final VisaInfoMapper visaInfoMapper;
 
-    private final VisaApplicationMapper visaApplicationMapper;
+    private final VisaCaseMapper visaCaseMapper;
 
     private final VisitAddressMapper visitAddressMapper;
 
     @Transactional
-    public VisaApplicationEntity saveVisaApplication(VisaApplicationDto visaApplicationDto) {
-        VisaApplicationEntity visaApplicationEntity = modelMapper.map(visaApplicationDto, VisaApplicationEntity.class);
+    public VisaCaseEntity saveVisaCase(VisaApplicationDto visaApplicationDto) {
+        VisaCaseEntity visaCaseEntity = modelMapper.map(visaApplicationDto, VisaCaseEntity.class);
 
-        ApplicantInfoEntity applicantInfo = visaApplicationEntity.getApplicantInfo();
+        ApplicantInfoEntity applicantInfo = visaCaseEntity.getApplicantInfo();
 
         WorkOrStudyInfoEntity workOrStudyInfo = applicantInfo.getWorkOrStudyInfo();
 
@@ -64,18 +64,17 @@ public class VisaApplicationService {
         applicantInfo.setPersonDocumentId(applicantInfo.getPersonDocument().getId());
 
         applicantInfoMapper.insert(applicantInfo);
-        visaApplicationEntity.setApplicantInfoId(applicantInfo.getId());
-        visaInfoMapper.insert(visaApplicationEntity.getVisaInfo());
-        visaApplicationEntity.setVisaInfoId(visaApplicationEntity.getVisaInfo().getId());
+        visaCaseEntity.setApplicantInfoId(applicantInfo.getId());
+        visaInfoMapper.insert(visaCaseEntity.getVisaInfo());
+        visaCaseEntity.setVisaInfoId(visaCaseEntity.getVisaInfo().getId());
 
-        visaApplicationMapper.insert(visaApplicationEntity);
+        visaCaseMapper.insert(visaCaseEntity);
 
-        visaApplicationEntity.getVisitPoints().forEach(visitAddressEntity -> {
-            visitAddressEntity.setVisaApplicationId(visaApplicationEntity.getId());
+        visaCaseEntity.getVisitPoints().forEach(visitAddressEntity -> {
+            visitAddressEntity.setVisaCaseId(visaCaseEntity.getId());
             visitAddressMapper.insert(visitAddressEntity);
         });
 
-        return visaApplicationEntity;
+        return visaCaseEntity;
     }
-
 }

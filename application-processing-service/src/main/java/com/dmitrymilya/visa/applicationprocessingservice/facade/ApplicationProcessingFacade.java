@@ -1,8 +1,9 @@
 package com.dmitrymilya.visa.applicationprocessingservice.facade;
 
-import com.dmitrymilya.visa.applicationprocessingservice.entity.ApplicantInfoEntity;
+import com.dmitrymilya.visa.shared.entity.ApplicantInfoEntity;
 import com.dmitrymilya.visa.applicationprocessingservice.entity.UserTaskEntity;
 import com.dmitrymilya.visa.applicationprocessingservice.entity.VisaApplicationEntity;
+import com.dmitrymilya.visa.applicationprocessingservice.service.ApplicationSender;
 import com.dmitrymilya.visa.applicationprocessingservice.service.MailNotificationRequestSender;
 import com.dmitrymilya.visa.applicationprocessingservice.service.UserTaskService;
 import com.dmitrymilya.visa.applicationprocessingservice.service.VisaApplicationService;
@@ -21,6 +22,8 @@ public class ApplicationProcessingFacade {
 
     private final MailNotificationRequestSender mailNotificationRequestSender;
 
+    private final ApplicationSender applicationSender;
+
     @Transactional
     public void prepareApplicationForProcessing(VisaApplicationDto visaApplicationDto) {
         VisaApplicationEntity visaApplicationEntity = visaApplicationService.saveVisaApplication(visaApplicationDto);
@@ -30,8 +33,9 @@ public class ApplicationProcessingFacade {
     @Transactional
     public void acceptApplication(Long userTaskId) {
         UserTaskEntity userTaskEntity = userTaskService.acceptApplication(userTaskId);
-        ApplicantInfoEntity applicantInfo = userTaskEntity.getVisaApplication().getApplicantInfo();
-        mailNotificationRequestSender.sendApplicationAcceptedNotificationRequest(applicantInfo);
+        VisaApplicationEntity visaApplication = userTaskEntity.getVisaApplication();
+        applicationSender.sendToCaseDecision(visaApplication);
+        mailNotificationRequestSender.sendApplicationAcceptedNotificationRequest(visaApplication.getApplicantInfo());
     }
 
     @Transactional

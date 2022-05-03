@@ -1,6 +1,6 @@
-package com.dmitrymilya.visa.applicationprocessingservice.dao;
+package com.dmitrymilya.visa.shared.dao;
 
-import com.dmitrymilya.visa.applicationprocessingservice.entity.AddressEntity;
+import com.dmitrymilya.visa.shared.entity.AddressEntity;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.SelectKey;

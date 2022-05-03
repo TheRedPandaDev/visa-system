@@ -1,4 +1,4 @@
-package com.dmitrymilya.visa.applicationprocessingservice.entity;
+package com.dmitrymilya.visa.shared.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

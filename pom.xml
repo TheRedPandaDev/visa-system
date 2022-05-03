@@ -22,12 +22,18 @@
 		<module>application-processing-service</module>
 		<module>mail-notification-service</module>
 		<module>case-decision-service</module>
+		<module>external-inquiries-service</module>
 	</modules>
 	<properties>
 		<java.version>17</java.version>
 		<jaxb.version>3.1.0</jaxb.version>
 	</properties>
 	<dependencies>
+		<dependency>
+			<groupId>org.mybatis.spring.boot</groupId>
+			<artifactId>mybatis-spring-boot-starter</artifactId>
+			<version>2.2.2</version>
+		</dependency>
 		<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
 			<artifactId>jackson-annotations</artifactId>
