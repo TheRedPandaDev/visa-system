@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>C:/Users/Dmily/Work/visa-system/visa-issue-service/src/main/java/com/dmitrymilya/visa/visaissueservice</OriginalElement>
+  <nodes>
+    <node x="603.8995633187773" y="147.50829694323147">com.dmitrymilya.visa.visaissueservice.service.VisaCaseSender</node>
+    <node x="185.0" y="941.0">com.dmitrymilya.visa.shared.dao.AddressMapper</node>
+    <node x="204.0" y="847.0">com.dmitrymilya.visa.shared.dao.ContactInfoMapper</node>
+    <node x="230.0" y="753.0">com.dmitrymilya.visa.shared.dao.ApplicantInfoMapper</node>
+    <node x="-22.0" y="847.0">com.dmitrymilya.visa.shared.dao.VisitAddressMapper</node>
+    <node x="603.8995633187773" y="432.5">com.dmitrymilya.visa.visaissueservice.service.VisaPrintService</node>
+    <node x="389.0" y="941.0">com.dmitrymilya.visa.shared.dao.VisaInfoMapper</node>
+    <node x="-22.0" y="753.0">com.dmitrymilya.visa.shared.dao.PersonDocumentMapper</node>
+    <node x="-22.0" y="941.0">com.dmitrymilya.visa.shared.dao.VisaCaseMapper</node>
+    <node x="690.6703056768557" y="-60.07117903930131">com.dmitrymilya.visa.visaissueservice.controller.UserTaskController</node>
+    <node x="815.0122270742359" y="548.0">com.dmitrymilya.visa.visaissueservice.service.UserTaskService</node>
+    <node x="185.5" y="-14.5">com.dmitrymilya.visa.visaissueservice.facade.VisaCaseFacade</node>
+    <node x="270.9100436681222" y="659.0">com.dmitrymilya.visa.shared.dao.WorkOrStudyInfoMapper</node>
+    <node x="616.9947598253275" y="293.95807860262005">com.dmitrymilya.visa.visaissueservice.service.MailNotificationRequestSender</node>
+    <node x="-22.0" y="639.0">com.dmitrymilya.visa.shared.dao.ExternalInquiryResponseMapper</node>
+    <node x="832.0122270742359" y="783.7091703056768">com.dmitrymilya.visa.visaissueservice.dao.UserTaskMapper</node>
+    <node x="11.5" y="229.0126637554585">com.dmitrymilya.visa.visaissueservice.consumer.VisaCaseConsumer</node>
+    <node x="-62.0" y="344.0">com.dmitrymilya.visa.shared.service.VisaCaseService</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="com.dmitrymilya.visa.visaissueservice.facade.VisaCaseFacade" target="com.dmitrymilya.visa.visaissueservice.service.VisaPrintService" relationship="TO_ONE">
+      <point x="194.5" y="31.5" />
+      <point x="574.5" y="523.0" />
+      <point x="758.3995633187773" y="523.0" />
+      <point x="-0.0" y="-49.0" />
+    </edge>
+    <edge source="com.dmitrymilya.visa.shared.service.VisaCaseService" target="com.dmitrymilya.visa.shared.dao.PersonDocumentMapper" relationship="TO_ONE">
+      <point x="-168.66666666666666" y="137.5" />
+      <point x="-28.666666666666657" y="715.0" />
+      <point x="94.0" y="715.0" />
+      <point x="0.0" y="-27.0" />
+    </edge>
+    <edge source="com.dmitrymilya.visa.visaissueservice.consumer.VisaCaseConsumer" target="com.dmitrymilya.visa.visaissueservice.facade.VisaCaseFacade" relationship="TO_ONE">
+      <point x="128.5" y="0.0" />
+      <point x="157.0" y="267.5126637554585" />
+      <point x="157.0" y="90.0" />
+      <point x="-194.5" y="0.0" />
+    </edge>
+    <edge source="com.dmitrymilya.visa.shared.service.VisaCaseService" target="com.dmitrymilya.visa.shared.dao.ContactInfoMapper" relationship="TO_ONE">
+      <point x="-175.33333333333331" y="137.5" />
+      <point x="-35.333333333333314" y="822.0" />
+      <point x="305.5" y="822.0" />
+      <point x="-0.0" y="-27.0" />
+    </edge>
+    <edge source="com.dmitrymilya.visa.shared.service.VisaCaseService" target="com.dmitrymilya.visa.shared.dao.VisaCaseMapper" relationship="TO_ONE">
+      <point x="-195.33333333333334" y="137.5" />
+      <point x="-55.33333333333334" y="926.0" />
+      <point x="71.5" y="926.0" />
+      <point x="-0.0" y="-27.0" />
+    </edge>
+    <edge source="com.dmitrymilya.visa.shared.service.VisaCaseService" target="com.dmitrymilya.visa.shared.dao.AddressMapper" relationship="TO_ONE">
+      <point x="-188.66666666666669" y="137.5" />
+      <point x="-48.666666666666686" y="916.0" />
+      <point x="277.0" y="916.0" />
+      <point x="-0.0" y="-27.0" />
+    </edge>
+    <edge source="com.dmitrymilya.visa.visaissueservice.service.UserTaskService" target="com.dmitrymilya.visa.visaissueservice.dao.UserTaskMapper" relationship="TO_ONE">
+      <point x="0.0" y="82.5" />
+      <point x="1019.0122270742359" y="805.75" />
+      <point x="1019.0122270742359" y="805.75" />
+      <point x="0.0" y="-71.0" />
+    </edge>
+    <edge source="com.dmitrymilya.visa.shared.service.VisaCaseService" target="com.dmitrymilya.visa.shared.dao.WorkOrStudyInfoMapper" relationship="TO_ONE">
+      <point x="177.69170305676857" y="133.82489082969448" />
+      <point x="-70.71834061135365" y="-32.844541484716046" />
+    </edge>
+    <edge source="com.dmitrymilya.visa.shared.service.VisaCaseService" target="com.dmitrymilya.visa.shared.dao.ExternalInquiryResponseMapper" relationship="TO_ONE">
+      <point x="-27.0" y="137.5" />
+      <point x="0.0" y="-27.0" />
+    </edge>
+    <edge source="com.dmitrymilya.visa.shared.service.VisaCaseService" target="com.dmitrymilya.visa.shared.dao.VisaInfoMapper" relationship="TO_ONE">
+      <point x="110.0" y="137.5" />
+      <point x="250.0" y="733.0" />
+      <point x="480.5" y="733.0" />
+      <point x="0.0" y="-27.0" />
+    </edge>
+    <edge source="com.dmitrymilya.visa.shared.service.VisaCaseService" target="com.dmitrymilya.visa.shared.dao.VisitAddressMapper" relationship="TO_ONE">
+      <point x="-182.0" y="137.5" />
+      <point x="-42.0" y="832.0" />
+      <point x="81.0" y="832.0" />
+      <point x="-0.0" y="-27.0" />
+    </edge>
+    <edge source="com.dmitrymilya.visa.visaissueservice.controller.UserTaskController" target="com.dmitrymilya.visa.visaissueservice.service.UserTaskService" relationship="TO_ONE">
+      <point x="71.84192139738013" y="71.10174672489094" />
+      <point x="0.0" y="-82.5" />
+    </edge>
+    <edge source="com.dmitrymilya.visa.visaissueservice.facade.VisaCaseFacade" target="com.dmitrymilya.visa.visaissueservice.service.UserTaskService" relationship="TO_ONE">
+      <point x="0.0" y="104.5" />
+      <point x="380.0" y="630.5" />
+      <point x="-204.0" y="0.0" />
+    </edge>
+    <edge source="com.dmitrymilya.visa.visaissueservice.facade.VisaCaseFacade" target="com.dmitrymilya.visa.visaissueservice.service.MailNotificationRequestSender" relationship="TO_ONE">
+      <point x="194.5" y="11.5" />
+      <point x="950.9947598253275" y="101.5" />
+      <point x="149.5" y="-49.5" />
+    </edge>
+    <edge source="com.dmitrymilya.visa.visaissueservice.facade.VisaCaseFacade" target="com.dmitrymilya.visa.shared.service.VisaCaseService" relationship="TO_ONE">
+      <point x="-40.0" y="104.5" />
+      <point x="200.0" y="-137.5" />
+    </edge>
+    <edge source="com.dmitrymilya.visa.visaissueservice.facade.VisaCaseFacade" target="com.dmitrymilya.visa.visaissueservice.service.VisaCaseSender" relationship="TO_ONE">
+      <point x="194.5" y="21.5" />
+      <point x="769.8995633187773" y="111.5" />
+      <point x="-0.0" y="-60.5" />
+    </edge>
+    <edge source="com.dmitrymilya.visa.shared.service.VisaCaseService" target="com.dmitrymilya.visa.shared.dao.ApplicantInfoMapper" relationship="TO_ONE">
+      <point x="126.0" y="137.5" />
+      <point x="-70.0" y="-27.0" />
+    </edge>
+    <edge source="com.dmitrymilya.visa.visaissueservice.controller.UserTaskController" target="com.dmitrymilya.visa.visaissueservice.facade.VisaCaseFacade" relationship="TO_ONE">
+      <point x="-208.97729257641902" y="23.086026200873476" />
+      <point x="815.1903930131004" y="34.51484716157216" />
+      <point x="815.1903930131004" y="20.158951965065484" />
+      <point x="696.3002183406114" y="20.158951965065484" />
+      <point x="696.3002183406114" y="21.41965065502194" />
+      <point x="196.68558951965065" y="-68.58034934497806" />
+    </edge>
+  </edges>
+  <settings layout="Compact" zoom="0.5498199279711885" showDependencies="true" x="702.7927947598253" y="536.5633187772925" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Fields</Category>
+    <Category>Methods</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

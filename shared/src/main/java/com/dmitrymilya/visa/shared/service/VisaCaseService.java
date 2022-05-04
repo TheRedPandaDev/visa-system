@@ -3,12 +3,12 @@ package com.dmitrymilya.visa.shared.service;
 import com.dmitrymilya.visa.shared.dao.AddressMapper;
 import com.dmitrymilya.visa.shared.dao.ApplicantInfoMapper;
 import com.dmitrymilya.visa.shared.dao.ContactInfoMapper;
+import com.dmitrymilya.visa.shared.dao.ExternalInquiryResponseMapper;
 import com.dmitrymilya.visa.shared.dao.PersonDocumentMapper;
 import com.dmitrymilya.visa.shared.dao.VisaCaseMapper;
 import com.dmitrymilya.visa.shared.dao.VisaInfoMapper;
 import com.dmitrymilya.visa.shared.dao.VisitAddressMapper;
 import com.dmitrymilya.visa.shared.dao.WorkOrStudyInfoMapper;
-import com.dmitrymilya.visa.shared.dto.application.VisaApplicationDto;
 import com.dmitrymilya.visa.shared.dto.visacase.VisaCaseDto;
 import com.dmitrymilya.visa.shared.entity.ApplicantInfoEntity;
 import com.dmitrymilya.visa.shared.entity.VisaCaseEntity;
@@ -20,7 +20,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @RequiredArgsConstructor
-public class VisaCaseService {
+public abstract class VisaCaseService {
 
     private final ModelMapper modelMapper;
 
@@ -39,6 +39,8 @@ public class VisaCaseService {
     private final VisaCaseMapper visaCaseMapper;
 
     private final VisitAddressMapper visitAddressMapper;
+
+    private final ExternalInquiryResponseMapper externalInquiryResponseMapper;
 
     @Transactional
     public VisaCaseEntity saveVisaCase(VisaCaseDto visaCaseDto) {
@@ -74,6 +76,11 @@ public class VisaCaseService {
         visaCaseEntity.getVisitPoints().forEach(visitAddressEntity -> {
             visitAddressEntity.setVisaCaseId(visaCaseEntity.getId());
             visitAddressMapper.insert(visitAddressEntity);
+        });
+
+        visaCaseEntity.getExternalInquiryResponses().forEach(externalInquiryResponseEntity -> {
+            externalInquiryResponseEntity.setVisaCaseId(visaCaseEntity.getId());
+            externalInquiryResponseMapper.insert(externalInquiryResponseEntity);
         });
 
         return visaCaseEntity;

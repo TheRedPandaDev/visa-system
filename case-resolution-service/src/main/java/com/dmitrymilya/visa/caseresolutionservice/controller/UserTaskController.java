@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/case-decision")
+@RequestMapping("/case-resolution")
 @RequiredArgsConstructor
 public class UserTaskController {
 
