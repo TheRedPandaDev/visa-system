@@ -1,4 +1,4 @@
-package com.dmitrymilya.visa.visaissueservice.service;
+package com.dmitrymilya.visa.shared.service;
 
 import com.dmitrymilya.visa.shared.dao.AddressMapper;
 import com.dmitrymilya.visa.shared.dao.ApplicantInfoMapper;

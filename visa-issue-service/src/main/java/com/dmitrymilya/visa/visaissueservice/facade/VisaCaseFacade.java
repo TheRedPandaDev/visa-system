@@ -1,21 +1,16 @@
 package com.dmitrymilya.visa.visaissueservice.facade;
 
-import com.dmitrymilya.visa.shared.dto.application.ApplicantInfoDto;
-import com.dmitrymilya.visa.shared.dto.visacase.ExternalInquiryResponseDto;
 import com.dmitrymilya.visa.shared.dto.visacase.VisaCaseDto;
 import com.dmitrymilya.visa.shared.entity.VisaCaseEntity;
 import com.dmitrymilya.visa.visaissueservice.entity.UserTaskEntity;
 import com.dmitrymilya.visa.visaissueservice.service.MailNotificationRequestSender;
 import com.dmitrymilya.visa.visaissueservice.service.UserTaskService;
 import com.dmitrymilya.visa.visaissueservice.service.VisaCaseSender;
-import com.dmitrymilya.visa.visaissueservice.service.VisaCaseService;
+import com.dmitrymilya.visa.shared.service.VisaCaseService;
 import com.dmitrymilya.visa.visaissueservice.service.VisaPrintService;
 import lombok.RequiredArgsConstructor;
-import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.util.List;
 
 @Service
 @RequiredArgsConstructor

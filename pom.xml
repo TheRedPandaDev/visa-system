@@ -24,6 +24,7 @@
 		<module>case-decision-service</module>
 		<module>external-inquiries-service</module>
 		<module>visa-issue-service</module>
+		<module>case-resolution-service</module>
 	</modules>
 	<properties>
 		<java.version>17</java.version>

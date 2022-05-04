@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.dmitrymilya.visa.visaissueservice.dao.UserTaskMapper">
-    <resultMap id="userTask" type="com.dmitrymilya.visa.visaissueservice.entity.UserTaskEntity"
+<mapper namespace="com.dmitrymilya.visa.caseresolutionservice.dao.UserTaskMapper">
+    <resultMap id="userTask" type="com.dmitrymilya.visa.caseresolutionservice.entity.UserTaskEntity"
                autoMapping="true">
         <id property="id" column="ut_id"/>
         <result property="visaCaseId" column="ut_visaCaseId"/>
-        <result property="isIssued" column="ut_isIssued"/>
+        <result property="isResolved" column="ut_isResolved"/>
         <result property="createDttm" column="ut_createDttm"/>
+        <result property="resolvedDttm" column="ut_resolvedDttm"/>
+        <result property="comment" column="ut_comment"/>
         <association property="visaCase"
                      javaType="com.dmitrymilya.visa.shared.entity.VisaCaseEntity"
                      autoMapping="true" columnPrefix="vc_">
@@ -65,29 +67,39 @@
         where ext_inq_res.visa_case_id = #{va_id}
     </select>
 
-    <select id="getUserTasksForIssuing" resultMap="userTask">
-        <include refid="selectUserTasksForIssuing"/>
+    <select id="getUserTasksForResolution" resultMap="userTask">
+        <include refid="selectUserTasks"/>
+        where ut_isResolved is false
         limit #{limit} offset #{offset}
     </select>
 
-    <select id="getUserTasksForIssuingCount" resultType="java.lang.Long">
+    <select id="getUserTasksForResolutionCount" resultType="java.lang.Long">
         select count(*)
         from user_task
-        where ut_isIssued is false
+        where is_resolved is false
     </select>
 
-    <select id="getUserTaskForIssuingById" resultMap="userTask">
-        <include refid="selectUserTasksForIssuing"/>
-        where ut_id = #{id}
+    <select id="getResolvedUserTasks" resultMap="userTask">
+        <include refid="selectUserTasks"/>
+        where ut_isResolved is true
+        limit #{limit} offset #{offset}
     </select>
 
-    <sql id="selectUserTasksForIssuing">
+    <select id="getResolvedUserTasksCount" resultType="java.lang.Long">
+        select count(*)
+        from user_task
+        where is_resolved is true
+    </select>
+
+    <sql id="selectUserTasks">
         select
             ut.id ut_id,
             ut.visa_case_id ut_visaCaseId,
             ut.decision ut_decision,
             ut.create_dttm ut_createDttm,
-            ut.is_issued ut_isIssued,
+            ut.is_resolved ut_isResolved,
+            ut.resolved_dttm ut_resolvedDttm,
+            ut.comment_value ut_comment,
 
             vc.id vc_id,
             vc.applicant_info_id vc_applicantInfoId,
@@ -154,7 +166,7 @@
             wosic.email wosic_email,
             wosic.phone_number wosic_phoneNumber
         from user_task ut
-                 inner join visa_case vc on (ut.is_issued is false and vc.id = ut.visa_case_id)
+                 inner join visa_case vc on vc.id = ut.visa_case_id
                  inner join visa_info vi on vi.id = va.visa_info_id
                  inner join applicant_info ai on ai.id = va.applicant_info_id
                  inner join address a on a.id = ai.address_id

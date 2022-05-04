@@ -3,9 +3,9 @@ server:
 
 spring:
   application:
-    name: visa-issue-service
+    name: case-decision-service
   datasource:
-    url: jdbc:postgresql://localhost:5432/visa_issue
+    url: jdbc:postgresql://localhost:5432/case_resolution
     type: com.zaxxer.hikari.HikariDataSource
     driver-class-name: org.postgresql.Driver
     username: postgres
@@ -37,8 +37,6 @@ management:
 
 application:
   kafka:
-    mail-notification-topic-name: mail_notification
-    visa-issue-topic-name: visa_issue
     case-resolution-topic-name: case_resolution
 
 mybatis:

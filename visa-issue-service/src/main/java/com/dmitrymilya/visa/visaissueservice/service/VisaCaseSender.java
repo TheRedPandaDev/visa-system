@@ -16,13 +16,13 @@ public class VisaCaseSender {
 
     private final KafkaTemplate<String, VisaCaseDto> kafkaTemplate;
 
-    @Value("${application.kafka.visa-issue-topic-name:visa_issue}")
-    private String visaIssueTopicName;
+    @Value("${application.kafka.case-resolution-topic-name:case_resolution}")
+    private String caseResolutionTopicName;
 
     public void sendToResolution(VisaCaseEntity visaCase) {
         VisaCaseDto visaCaseDto = modelMapper.map(visaCase, VisaCaseDto.class);
 
-        kafkaTemplate.send(visaIssueTopicName, visaCaseDto);
+        kafkaTemplate.send(caseResolutionTopicName, visaCaseDto);
     }
 
 }
