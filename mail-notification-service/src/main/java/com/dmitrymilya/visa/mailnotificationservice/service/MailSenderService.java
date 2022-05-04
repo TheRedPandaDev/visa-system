@@ -36,6 +36,7 @@ public class MailSenderService {
             mimeMessageHelper.setTo(recipientEmail);
         } catch (MessagingException | UnsupportedEncodingException e) {
             e.printStackTrace();
+            throw new RuntimeException(String.format("Got an error during writing the message: %s", e));
         }
 
         javaMailSender.send(mimeMessage);

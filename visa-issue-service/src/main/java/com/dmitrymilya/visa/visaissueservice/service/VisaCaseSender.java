@@ -1,7 +1,7 @@
-package com.dmitrymilya.visa.casedecisionservice.service;
+package com.dmitrymilya.visa.visaissueservice.service;
 
-import com.dmitrymilya.visa.shared.entity.VisaCaseEntity;
 import com.dmitrymilya.visa.shared.dto.visacase.VisaCaseDto;
+import com.dmitrymilya.visa.shared.entity.VisaCaseEntity;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Value;
@@ -19,21 +19,10 @@ public class VisaCaseSender {
     @Value("${application.kafka.visa-issue-topic-name:visa_issue}")
     private String visaIssueTopicName;
 
-    @Value("${application.kafka.case-resolution-topic-name:case_resolution}")
-    private String caseResolutionTopicName;
-
-    public void sendToIssue(VisaCaseEntity visaCase) {
-        send(visaCase, visaIssueTopicName);
-    }
-
     public void sendToResolution(VisaCaseEntity visaCase) {
-        send(visaCase, caseResolutionTopicName);
-    }
-
-    private void send(VisaCaseEntity visaCase, String topicName) {
         VisaCaseDto visaCaseDto = modelMapper.map(visaCase, VisaCaseDto.class);
 
-        kafkaTemplate.send(topicName, visaCaseDto);
+        kafkaTemplate.send(visaIssueTopicName, visaCaseDto);
     }
 
 }

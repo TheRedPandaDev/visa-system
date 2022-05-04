@@ -1,0 +1,45 @@
+server:
+  port: 0
+
+spring:
+  application:
+    name: visa-issue-service
+  datasource:
+    url: jdbc:postgresql://localhost:5432/case_decision
+    type: com.zaxxer.hikari.HikariDataSource
+    driver-class-name: org.postgresql.Driver
+    username: postgres
+    password: root
+  kafka:
+    bootstrap-servers: localhost:29092
+    consumer:
+      auto-offset-reset: earliest
+      group-id: application_processing_service
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+
+eureka:
+  instance:
+    appname: ${spring.application.name}
+    prefer-ip-address: true
+  client:
+    service-url:
+      defaultZone: http://localhost:2022/eureka/
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+
+application:
+  kafka:
+    mail-notification-topic-name: mail_notification
+    visa-issue-topic-name: visa_issue
+    case-resolution-topic-name: case_resolution
+
+mybatis:
+  mapper-locations: classpath*:mapper/*Mapper.xml

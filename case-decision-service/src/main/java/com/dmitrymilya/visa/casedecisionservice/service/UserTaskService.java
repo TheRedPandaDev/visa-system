@@ -1,11 +1,11 @@
 package com.dmitrymilya.visa.casedecisionservice.service;
 
-import com.dmitrymilya.visa.casedecisionservice.dao.ExternalInquiryResponseMapper;
+import com.dmitrymilya.visa.shared.dao.ExternalInquiryResponseMapper;
 import com.dmitrymilya.visa.casedecisionservice.dao.UserTaskMapper;
 import com.dmitrymilya.visa.casedecisionservice.dto.UserTaskDto;
-import com.dmitrymilya.visa.casedecisionservice.entity.ExternalInquiryResponseEntity;
+import com.dmitrymilya.visa.shared.entity.ExternalInquiryResponseEntity;
 import com.dmitrymilya.visa.casedecisionservice.entity.UserTaskEntity;
-import com.dmitrymilya.visa.casedecisionservice.entity.VisaCaseEntity;
+import com.dmitrymilya.visa.shared.entity.VisaCaseEntity;
 import com.dmitrymilya.visa.shared.dto.visacase.ExternalInquiryResponseDto;
 import com.dmitrymilya.visa.shared.model.DecisionEnum;
 import com.dmitrymilya.visa.shared.util.Page;

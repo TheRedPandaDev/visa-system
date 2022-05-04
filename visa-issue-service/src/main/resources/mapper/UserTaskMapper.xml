@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.dmitrymilya.visa.casedecisionservice.dao.UserTaskMapper">
-    <resultMap id="userTask" type="com.dmitrymilya.visa.casedecisionservice.entity.UserTaskEntity"
+<mapper namespace="com.dmitrymilya.visa.visaissueservice.dao.UserTaskMapper">
+    <resultMap id="userTask" type="com.dmitrymilya.visa.visaissueservice.entity.UserTaskEntity"
                autoMapping="true">
         <id property="id" column="ut_id"/>
         <result property="visaCaseId" column="ut_visaCaseId"/>
-        <result property="decision" column="ut_decision"/>
+        <result property="isIssued" column="ut_isIssued"/>
         <result property="createDttm" column="ut_createDttm"/>
         <association property="visaCase"
                      javaType="com.dmitrymilya.visa.shared.entity.VisaCaseEntity"
@@ -65,47 +65,29 @@
         where ext_inq_res.visa_case_id = #{va_id}
     </select>
 
-    <select id="getUserTasksForDecision" resultMap="userTask">
-        <include refid="selectUserTasksForDecision"/>
-        where ut_readyForDecision is true
+    <select id="getUserTasksForIssuing" resultMap="userTask">
+        <include refid="selectUserTasksForIssuing"/>
         limit #{limit} offset #{offset}
     </select>
 
-    <select id="getUserTasksForDecisionCount" resultType="java.lang.Long">
+    <select id="getUserTasksForIssuingCount" resultType="java.lang.Long">
         select count(*)
         from user_task
-        where decision is null and ready_for_decision is true
+        where ut_isIssued is false
     </select>
 
-    <select id="getUserTaskForDecisionById" resultMap="userTask">
-        <include refid="selectUserTasksForDecision"/>
-        where ut_id = #{id} and ut_readyForDecision is true
-    </select>
-
-    <select id="getUserTasksForInquiries"
-            resultMap="userTask">
-        <include refid="selectUserTasksForDecision"/>
+    <select id="getUserTaskForIssuingById" resultMap="userTask">
+        <include refid="selectUserTasksForIssuing"/>
         where ut_id = #{id}
     </select>
 
-    <select id="getUserTasksForInquiriesCount" resultType="java.lang.Long">
-        select count(*)
-        from user_task
-        where decision is null
-    </select>
-
-    <select id="getUserTaskForInquiriesById" resultMap="userTask">
-        <include refid="selectUserTasksForDecision"/>
-        where ut_id = #{id}
-    </select>
-
-    <sql id="selectUserTasksForDecision">
+    <sql id="selectUserTasksForIssuing">
         select
             ut.id ut_id,
             ut.visa_case_id ut_visaCaseId,
             ut.decision ut_decision,
             ut.create_dttm ut_createDttm,
-            ut.ready_for_decision ut_readyForDecision,
+            ut.is_issued ut_isIssued,
 
             vc.id vc_id,
             vc.applicant_info_id vc_applicantInfoId,
@@ -172,7 +154,7 @@
             wosic.email wosic_email,
             wosic.phone_number wosic_phoneNumber
         from user_task ut
-                 inner join visa_case vc on (ut.decision is null and vc.id = ut.visa_case_id)
+                 inner join visa_case vc on (ut.is_issued is false and vc.id = ut.visa_case_id)
                  inner join visa_info vi on vi.id = va.visa_info_id
                  inner join applicant_info ai on ai.id = va.applicant_info_id
                  inner join address a on a.id = ai.address_id

@@ -1,16 +1,17 @@
-package com.dmitrymilya.visa.casedecisionservice.service;
+package com.dmitrymilya.visa.visaissueservice.service;
 
-import com.dmitrymilya.visa.shared.dao.VisaCaseMapper;
-import com.dmitrymilya.visa.shared.dao.VisitAddressMapper;
-import com.dmitrymilya.visa.shared.entity.VisaCaseEntity;
 import com.dmitrymilya.visa.shared.dao.AddressMapper;
 import com.dmitrymilya.visa.shared.dao.ApplicantInfoMapper;
 import com.dmitrymilya.visa.shared.dao.ContactInfoMapper;
 import com.dmitrymilya.visa.shared.dao.PersonDocumentMapper;
+import com.dmitrymilya.visa.shared.dao.VisaCaseMapper;
 import com.dmitrymilya.visa.shared.dao.VisaInfoMapper;
+import com.dmitrymilya.visa.shared.dao.VisitAddressMapper;
 import com.dmitrymilya.visa.shared.dao.WorkOrStudyInfoMapper;
 import com.dmitrymilya.visa.shared.dto.application.VisaApplicationDto;
+import com.dmitrymilya.visa.shared.dto.visacase.VisaCaseDto;
 import com.dmitrymilya.visa.shared.entity.ApplicantInfoEntity;
+import com.dmitrymilya.visa.shared.entity.VisaCaseEntity;
 import com.dmitrymilya.visa.shared.entity.WorkOrStudyInfoEntity;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
@@ -40,8 +41,8 @@ public class VisaCaseService {
     private final VisitAddressMapper visitAddressMapper;
 
     @Transactional
-    public VisaCaseEntity saveVisaCase(VisaApplicationDto visaApplicationDto) {
-        VisaCaseEntity visaCaseEntity = modelMapper.map(visaApplicationDto, VisaCaseEntity.class);
+    public VisaCaseEntity saveVisaCase(VisaCaseDto visaCaseDto) {
+        VisaCaseEntity visaCaseEntity = modelMapper.map(visaCaseDto, VisaCaseEntity.class);
 
         ApplicantInfoEntity applicantInfo = visaCaseEntity.getApplicantInfo();
 

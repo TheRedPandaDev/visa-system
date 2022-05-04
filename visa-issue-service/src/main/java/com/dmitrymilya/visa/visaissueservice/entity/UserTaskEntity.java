@@ -1,4 +1,4 @@
-package com.dmitrymilya.visa.casedecisionservice.entity;
+package com.dmitrymilya.visa.visaissueservice.entity;
 
 import com.dmitrymilya.visa.shared.entity.VisaCaseEntity;
 import com.dmitrymilya.visa.shared.model.DecisionEnum;
@@ -21,8 +21,6 @@ public class UserTaskEntity {
 
     private OffsetDateTime createDttm;
 
-    private DecisionEnum decision;
-
-    private Boolean isReadyForDecision = Boolean.FALSE;
+    private Boolean isIssued = Boolean.FALSE;
 
 }

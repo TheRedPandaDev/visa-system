@@ -1,4 +1,4 @@
-package com.dmitrymilya.visa.casedecisionservice.entity;
+package com.dmitrymilya.visa.shared.entity;
 
 import com.dmitrymilya.visa.shared.model.ExternalInquiryOrganizationEnum;
 import com.dmitrymilya.visa.shared.model.InquiryResponseStatusEnum;
