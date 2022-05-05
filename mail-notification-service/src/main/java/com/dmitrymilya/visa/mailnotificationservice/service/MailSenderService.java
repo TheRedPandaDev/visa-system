@@ -16,13 +16,13 @@ public class MailSenderService {
 
     private final JavaMailSender javaMailSender;
 
-    @Value("${application.mail.subject:Information about your visa application")
+    @Value("${application.mail.subject:Information about your visa application}")
     private String mailSubject;
 
-    @Value("${application.mail.from:noreply@visa-system.ru")
+    @Value("${application.mail.from:noreply@visa-system.ru}")
     private String mailFrom;
 
-    @Value("${application.mail.personal:Visa System")
+    @Value("${application.mail.personal:Visa System}")
     private String mailPersonal;
 
     public void sendEmail(String message, String recipientEmail) {

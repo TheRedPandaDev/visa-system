@@ -5,16 +5,20 @@
 	<parent>
 		<artifactId>visa-system</artifactId>
 		<groupId>com.dmitrymilya.visa</groupId>
-		<version>0.0.1-SNAPSHOT</version>
+		<version>1.0.0</version>
 	</parent>
 	<artifactId>case-decision-service</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
 	<name>case-decision-service</name>
 	<description>Case Decision Service</description>
 	<properties>
 		<spring-cloud.version>2021.0.2</spring-cloud.version>
 	</properties>
 	<dependencies>
+		<dependency>
+			<groupId>org.liquibase</groupId>
+			<artifactId>liquibase-maven-plugin</artifactId>
+			<version>${liquibase.version}</version>
+		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
@@ -50,7 +54,7 @@
 		<dependency>
 			<groupId>com.dmitrymilya.visa</groupId>
 			<artifactId>shared</artifactId>
-			<version>${project.version}</version>
+			<version>${project.global-version}</version>
 		</dependency>
 	</dependencies>
 	<dependencyManagement>

@@ -15,10 +15,6 @@ public class ApplicationMessageConsumer {
 
     @KafkaListener(topics = "${application.kafka.application-processing-topic-name:application_processing}")
     public void consumeApplication(@Payload VisaApplicationDto visaApplication) {
-        try {
-            applicationProcessingFacade.prepareApplicationForProcessing(visaApplication);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        applicationProcessingFacade.prepareApplicationForProcessing(visaApplication);
     }
 }

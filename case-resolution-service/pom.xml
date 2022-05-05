@@ -5,16 +5,20 @@
 	<parent>
 		<artifactId>visa-system</artifactId>
 		<groupId>com.dmitrymilya.visa</groupId>
-		<version>0.0.1-SNAPSHOT</version>
+		<version>1.0.0</version>
 	</parent>
 	<artifactId>case-resolution-service</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
 	<name>case-resolution-service</name>
 	<description>Case Resolution Service</description>
 	<properties>
 		<spring-cloud.version>2021.0.2</spring-cloud.version>
 	</properties>
 	<dependencies>
+		<dependency>
+			<groupId>org.liquibase</groupId>
+			<artifactId>liquibase-maven-plugin</artifactId>
+			<version>${liquibase.version}</version>
+		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
@@ -35,7 +39,7 @@
 		<dependency>
 			<groupId>com.dmitrymilya.visa</groupId>
 			<artifactId>shared</artifactId>
-			<version>${project.version}</version>
+			<version>${project.global-version}</version>
 		</dependency>
 
 		<dependency>
@@ -67,7 +71,44 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+			<plugin>
+				<groupId>org.liquibase</groupId>
+				<artifactId>liquibase-maven-plugin</artifactId>
+				<version>${liquibase.version}</version>
+				<configuration>
+					<!--suppress UnresolvedMavenProperty -->
+					<propertyFile>${profile.propertyFile}</propertyFile>
+					<!--suppress UnresolvedMavenProperty -->
+					<changeLogFile>${profile.changeLogFile}</changeLogFile>
+					<!--suppress UnresolvedMavenProperty -->
+					<dataDir>${profile.dataDir}</dataDir>
+					<!--suppress UnresolvedMavenProperty, MavenModelInspection, MybatisXMapperXmlInspection -->
+					<verbose>${profile.verbose}</verbose>
+					<!--suppress UnresolvedMavenProperty -->
+					<logging>${profile.logging}</logging>
+					<promptOnNonLocalDatabase>false</promptOnNonLocalDatabase>
+				</configuration>
+			</plugin>
 		</plugins>
 	</build>
+
+	<profiles>
+		<profile>
+			<id>local</id>
+			<activation>
+				<property>
+					<name>env</name>
+					<value>local</value>
+				</property>
+			</activation>
+			<properties>
+				<profile.propertyFile>src/main/resources/db/local/liquibase.properties</profile.propertyFile>
+				<profile.changeLogFile>src/main/resources/db/changelog/db.changelog-master.yaml</profile.changeLogFile>
+				<profile.dataDir>src/main/resources/db/local/data</profile.dataDir>
+				<profile.verbose>true</profile.verbose>
+				<profile.logging>debug</profile.logging>
+			</properties>
+		</profile>
+	</profiles>
 
 </project>

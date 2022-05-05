@@ -11,7 +11,7 @@
 	<groupId>com.dmitrymilya.visa</groupId>
 	<artifactId>visa-system</artifactId>
 	<packaging>pom</packaging>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0.0</version>
 	<name>visa-system</name>
 	<description>Visa System</description>
 	<modules>
@@ -29,6 +29,7 @@
 	<properties>
 		<java.version>17</java.version>
 		<jaxb.version>3.1.0</jaxb.version>
+		<project.global-version>1.0.0</project.global-version>
 	</properties>
 	<dependencies>
 		<dependency>

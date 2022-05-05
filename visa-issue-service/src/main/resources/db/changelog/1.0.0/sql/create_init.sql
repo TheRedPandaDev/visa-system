@@ -107,10 +107,10 @@ create table if not exists visa_case
             primary key,
     attached_photo    bytea                                                                  not null,
     applicant_info_id bigint                                                                 not null
-        constraint visa_application_applicant_info_id_fk
+        constraint visa_case_applicant_info_id_fk
             references applicant_info (id),
     visa_info_id      bigint                                                                 not null
-        constraint visa_application_visa_info_id_fk
+        constraint visa_case_visa_info_id_fk
             references visa_info (id),
     create_dttm       timestamp with time zone default now()                                 not null
 );

@@ -67,25 +67,25 @@
 
     <select id="getUserTasksForIssuing" resultMap="userTask">
         <include refid="selectUserTasksForIssuing"/>
+        order by ut.create_dttm desc
         limit #{limit} offset #{offset}
     </select>
 
     <select id="getUserTasksForIssuingCount" resultType="java.lang.Long">
         select count(*)
-        from user_task
-        where ut_isIssued is false
+        from user_task ut
+        where ut.is_issued is false
     </select>
 
     <select id="getUserTaskForIssuingById" resultMap="userTask">
         <include refid="selectUserTasksForIssuing"/>
-        where ut_id = #{id}
+        where ut.id = #{id}
     </select>
 
     <sql id="selectUserTasksForIssuing">
         select
             ut.id ut_id,
             ut.visa_case_id ut_visaCaseId,
-            ut.decision ut_decision,
             ut.create_dttm ut_createDttm,
             ut.is_issued ut_isIssued,
 
@@ -155,15 +155,14 @@
             wosic.phone_number wosic_phoneNumber
         from user_task ut
                  inner join visa_case vc on (ut.is_issued is false and vc.id = ut.visa_case_id)
-                 inner join visa_info vi on vi.id = va.visa_info_id
-                 inner join applicant_info ai on ai.id = va.applicant_info_id
+                 inner join visa_info vi on vi.id = vc.visa_info_id
+                 inner join applicant_info ai on ai.id = vc.applicant_info_id
                  inner join address a on a.id = ai.address_id
                  inner join contact_info ci on ci.id = ai.contact_info_id
                  inner join person_document pd on pd.id = ai.person_document_id
                  inner join work_or_study_info wosi on wosi.id = ai.work_or_study_info_id
                  inner join address wosia on wosia.id = wosi.address_id
                  inner join contact_info wosic on wosic.id = wosi.contact_info_id
-        order by ut.create_dttm desc
     </sql>
 
 </mapper>

@@ -2,7 +2,6 @@ package com.dmitrymilya.visa.casedecisionservice.facade;
 
 import com.dmitrymilya.visa.casedecisionservice.dto.VisaCaseExternalInquiriesRequestDto;
 import com.dmitrymilya.visa.casedecisionservice.entity.UserTaskEntity;
-import com.dmitrymilya.visa.shared.entity.VisaCaseEntity;
 import com.dmitrymilya.visa.casedecisionservice.service.ExternalInquiriesService;
 import com.dmitrymilya.visa.casedecisionservice.service.MailNotificationRequestSender;
 import com.dmitrymilya.visa.casedecisionservice.service.UserTaskService;
@@ -11,6 +10,7 @@ import com.dmitrymilya.visa.casedecisionservice.service.VisaCaseService;
 import com.dmitrymilya.visa.shared.dto.application.ApplicantInfoDto;
 import com.dmitrymilya.visa.shared.dto.application.VisaApplicationDto;
 import com.dmitrymilya.visa.shared.dto.visacase.ExternalInquiryResponseDto;
+import com.dmitrymilya.visa.shared.entity.VisaCaseEntity;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;

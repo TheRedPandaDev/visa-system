@@ -5,10 +5,9 @@
 	<parent>
 		<artifactId>visa-system</artifactId>
 		<groupId>com.dmitrymilya.visa</groupId>
-		<version>0.0.1-SNAPSHOT</version>
+		<version>1.0.0</version>
 	</parent>
 	<artifactId>application-processing-service</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
 	<name>application-processing-service</name>
 	<description>Application Processing Service</description>
 	<properties>
@@ -41,7 +40,7 @@
 		<dependency>
 			<groupId>com.dmitrymilya.visa</groupId>
 			<artifactId>shared</artifactId>
-			<version>${project.version}</version>
+			<version>${project.global-version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.postgresql</groupId>

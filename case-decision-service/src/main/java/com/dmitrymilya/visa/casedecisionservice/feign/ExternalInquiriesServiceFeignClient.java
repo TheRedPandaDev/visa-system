@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestHeader;
 
 import java.util.List;
 
-@FeignClient(name = "external-inquiries-service", url = "${feign.gateway-service:http://localhost:2023}")
+@FeignClient(name = "external-inquiries-service", url = "${feign.gateway-service:http://localhost:2023/external-inquiries-service}")
 public interface ExternalInquiriesServiceFeignClient {
 
     @PostMapping("/inquire")

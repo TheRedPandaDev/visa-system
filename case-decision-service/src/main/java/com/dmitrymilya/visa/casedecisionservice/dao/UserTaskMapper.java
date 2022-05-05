@@ -17,7 +17,7 @@ import java.util.Optional;
 public interface UserTaskMapper {
 
     @Insert("insert into user_task(id, visa_case_id, decision) " +
-            "values (#{id}, #{visaApplicationId}, #{decision})")
+            "values (#{id}, #{visaCaseId}, #{decision})")
     @SelectKey(resultType = Long.class, keyProperty = "id", before = true,
             statement = "select nextval('user_task_id_seq')")
     void insert(UserTaskEntity userTaskEntity);

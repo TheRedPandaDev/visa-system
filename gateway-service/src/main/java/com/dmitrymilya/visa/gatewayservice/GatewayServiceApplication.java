@@ -13,8 +13,6 @@ import org.springframework.context.annotation.Bean;
 
 @SpringBootApplication
 @EnableZuulProxy
-@EnableEurekaClient
-@EnableFeignClients
 @MapperScan
 @EnableConfigurationProperties
 public class GatewayServiceApplication {

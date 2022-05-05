@@ -6,7 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 
 @SpringBootApplication
-@MapperScan
+@MapperScan({"com.dmitrymilya.visa.casedecisionservice.dao", "com.dmitrymilya.visa.shared.dao"})
 @EnableFeignClients
 public class CaseDecisionServiceApplication {
 

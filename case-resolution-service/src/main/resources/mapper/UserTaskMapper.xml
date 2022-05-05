@@ -69,7 +69,8 @@
 
     <select id="getUserTasksForResolution" resultMap="userTask">
         <include refid="selectUserTasks"/>
-        where ut_isResolved is false
+        where ut.is_resolved is false
+        order by ut.create_dttm desc
         limit #{limit} offset #{offset}
     </select>
 
@@ -81,7 +82,8 @@
 
     <select id="getResolvedUserTasks" resultMap="userTask">
         <include refid="selectUserTasks"/>
-        where ut_isResolved is true
+        where ut.is_resolved is true
+        order by ut.create_dttm desc
         limit #{limit} offset #{offset}
     </select>
 
@@ -95,7 +97,6 @@
         select
             ut.id ut_id,
             ut.visa_case_id ut_visaCaseId,
-            ut.decision ut_decision,
             ut.create_dttm ut_createDttm,
             ut.is_resolved ut_isResolved,
             ut.resolved_dttm ut_resolvedDttm,
@@ -167,15 +168,14 @@
             wosic.phone_number wosic_phoneNumber
         from user_task ut
                  inner join visa_case vc on vc.id = ut.visa_case_id
-                 inner join visa_info vi on vi.id = va.visa_info_id
-                 inner join applicant_info ai on ai.id = va.applicant_info_id
+                 inner join visa_info vi on vi.id = vc.visa_info_id
+                 inner join applicant_info ai on ai.id = vc.applicant_info_id
                  inner join address a on a.id = ai.address_id
                  inner join contact_info ci on ci.id = ai.contact_info_id
                  inner join person_document pd on pd.id = ai.person_document_id
                  inner join work_or_study_info wosi on wosi.id = ai.work_or_study_info_id
                  inner join address wosia on wosia.id = wosi.address_id
                  inner join contact_info wosic on wosic.id = wosi.contact_info_id
-        order by ut.create_dttm desc
     </sql>
 
 </mapper>

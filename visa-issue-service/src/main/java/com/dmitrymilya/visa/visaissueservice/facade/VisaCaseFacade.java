@@ -6,7 +6,7 @@ import com.dmitrymilya.visa.visaissueservice.entity.UserTaskEntity;
 import com.dmitrymilya.visa.visaissueservice.service.MailNotificationRequestSender;
 import com.dmitrymilya.visa.visaissueservice.service.UserTaskService;
 import com.dmitrymilya.visa.visaissueservice.service.VisaCaseSender;
-import com.dmitrymilya.visa.shared.service.VisaCaseService;
+import com.dmitrymilya.visa.visaissueservice.service.VisaCaseService;
 import com.dmitrymilya.visa.visaissueservice.service.VisaPrintService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

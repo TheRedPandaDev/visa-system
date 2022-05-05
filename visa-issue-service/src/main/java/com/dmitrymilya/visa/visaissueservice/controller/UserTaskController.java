@@ -33,7 +33,7 @@ public class UserTaskController {
         return ResponseEntity.ok(userTaskService.getUserTasksForIssuing(page, size));
     }
 
-    @PostMapping(value = "/{userTaskId}/print", produces = MediaType.APPLICATION_PDF_VALUE)
+    @GetMapping(value = "/{userTaskId}/print", produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
     public @ResponseBody byte[] printVisa(@PathVariable Long userTaskId) {
 
         return visaCaseFacade.printVisa(userTaskId);

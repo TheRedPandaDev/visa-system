@@ -1,4 +1,4 @@
-package com.dmitrymilya.visa.shared.service;
+package com.dmitrymilya.visa.visaissueservice.service;
 
 import com.dmitrymilya.visa.shared.dao.AddressMapper;
 import com.dmitrymilya.visa.shared.dao.ApplicantInfoMapper;
@@ -20,7 +20,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @RequiredArgsConstructor
-public abstract class VisaCaseService {
+public class VisaCaseService {
 
     private final ModelMapper modelMapper;
 

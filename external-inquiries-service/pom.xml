@@ -5,10 +5,9 @@
 	<parent>
 		<artifactId>visa-system</artifactId>
 		<groupId>com.dmitrymilya.visa</groupId>
-		<version>0.0.1-SNAPSHOT</version>
+		<version>1.0.0</version>
 	</parent>
 	<artifactId>external-inquiries-service</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
 	<name>external-inquiries-service</name>
 	<description>External Inquiries Service</description>
 	<properties>
@@ -27,7 +26,13 @@
 		<dependency>
 			<groupId>com.dmitrymilya.visa</groupId>
 			<artifactId>shared</artifactId>
-			<version>${project.version}</version>
+			<version>${project.global-version}</version>
+			<exclusions>
+				<exclusion>
+					<groupId>org.mybatis.spring.boot</groupId>
+					<artifactId>mybatis-spring-boot-starter</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 	</dependencies>
 	<dependencyManagement>

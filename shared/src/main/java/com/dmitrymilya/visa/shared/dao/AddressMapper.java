@@ -13,7 +13,7 @@ public interface AddressMapper {
     @Insert("insert into address(id, region, city, street, house, section, building, apartment) " +
             "values (#{id}, #{region}, #{city}, #{street}, #{house}, #{section}, #{building}, #{apartment})")
     @SelectKey(resultType = Long.class, keyProperty = "id", before = true,
-            statement = "select nextval('visa_application_id_seq')")
+            statement = "select nextval('address_id_seq')")
     void insert(AddressEntity addressEntity);
 
 }

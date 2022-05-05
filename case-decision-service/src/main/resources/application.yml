@@ -30,6 +30,7 @@ eureka:
   instance:
     appname: ${spring.application.name}
     prefer-ip-address: true
+    hostname: localhost
   client:
     service-url:
       defaultZone: http://localhost:2022/eureka/
@@ -51,4 +52,4 @@ mybatis:
   mapper-locations: classpath*:mapper/*Mapper.xml
 
 feign:
-  gateway-service: http://localhost:2023
+  gateway-service: http://localhost:2023/external-inquiries-service
