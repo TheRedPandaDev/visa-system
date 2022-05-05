@@ -25,10 +25,6 @@ public class ExternalInquiriesFacade {
         List<ExternalInquiryResponseDto> externalInquiryResponses = new ArrayList<>();
         externalInquiriesRequestDto.getExternalInquiryOrganizations().forEach(externalInquiryOrganization -> {
             ExternalInquirySender externalInquirySender = externalInquirySenders.get(externalInquiryOrganization);
-            if (externalInquirySender == null) {
-                throw new RuntimeException(String.format("No external inquiry sender for organization: %s",
-                        externalInquiryOrganization));
-            }
 
             ExternalInquiryResponseDto externalInquiryResponse =
                     externalInquirySender.makeInquiry(externalInquiriesRequestDto.getApplicantInfoDto());

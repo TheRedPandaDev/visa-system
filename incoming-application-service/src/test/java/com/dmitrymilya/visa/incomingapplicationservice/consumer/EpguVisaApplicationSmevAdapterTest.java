@@ -121,6 +121,11 @@ class EpguVisaApplicationSmevAdapterTest {
         Address address = new Address();
         address.setRegion("Uusimaa");
         address.setCity("Helsinki");
+        address.setStreet("Street");
+        address.setHouse("1");
+        address.setSection("1");
+        address.setBuilding("1");
+        address.setApartment("1");
 
         WorkOrStudyInfo workOrStudyInfo = new WorkOrStudyInfo();
         workOrStudyInfo.setOrganization("Nokia");

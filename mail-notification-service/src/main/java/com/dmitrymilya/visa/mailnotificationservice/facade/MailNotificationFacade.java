@@ -25,10 +25,6 @@ public class MailNotificationFacade {
 
     public void sendMailNotification(MailNotificationDto mailNotificationDto) {
         MessageGenerator messageGenerator = messageGenerators.get(mailNotificationDto.getNotificationReason());
-        if (messageGenerator == null) {
-            throw new RuntimeException(String.format("No message generator for reason: %s",
-                    mailNotificationDto.getNotificationReason()));
-        }
 
         String message = messageGenerator.getMessage(mailNotificationDto.getApplicantName());
         mailSenderService.sendEmail(message, mailNotificationDto.getEmail());

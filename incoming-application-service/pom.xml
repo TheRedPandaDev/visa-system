@@ -82,6 +82,38 @@
 					<packageName>com.dmitrymilya.visa.incomingapplicationservice.model</packageName>
 				</configuration>
 			</plugin>
+			<plugin>
+				<groupId>org.jacoco</groupId>
+				<artifactId>jacoco-maven-plugin</artifactId>
+				<version>0.8.7</version>
+				<configuration>
+					<excludes>
+						<exclude>**/config/*</exclude>
+						<exclude>**/controller/*</exclude>
+						<exclude>**/*Dto.*</exclude>
+						<exclude>**/*IncomingApplicationServiceApplication*</exclude>
+						<exclude>**/ApplicationSender*</exclude>
+						<exclude>**/ObjectFactory*</exclude>
+					</excludes>
+					<formats>
+						<format>HTML</format>
+					</formats>
+				</configuration>
+				<executions>
+					<execution>
+						<goals>
+							<goal>prepare-agent</goal>
+						</goals>
+					</execution>
+					<execution>
+						<id>report</id>
+						<phase>test</phase>
+						<goals>
+							<goal>report</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
 		</plugins>
 	</build>
 

@@ -8,6 +8,7 @@ import com.dmitrymilya.visa.mailnotificationservice.service.MailSenderService;
 import com.dmitrymilya.visa.shared.dto.mail.ApplicantNameDto;
 import com.dmitrymilya.visa.shared.dto.mail.MailNotificationDto;
 import com.dmitrymilya.visa.shared.model.NotificationReasonEnum;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
@@ -55,6 +56,7 @@ class MailNotificationFacadeTest {
                 .sendEmail(applicationDeclinedMessageGenerator.getMessage(mailNotificationDto.getApplicantName()),
                         mailNotificationDto.getEmail());
     }
+
     @Test
     void testSendMailNotificationVisaIssueDeclined() {
         MailNotificationDto mailNotificationDto = getMailNotificationDto();
@@ -66,6 +68,7 @@ class MailNotificationFacadeTest {
                 .sendEmail(visaIssueDeclinedMessageGenerator.getMessage(mailNotificationDto.getApplicantName()),
                         mailNotificationDto.getEmail());
     }
+
     @Test
     void testSendMailNotificationVisaIssued() {
         MailNotificationDto mailNotificationDto = getMailNotificationDto();
