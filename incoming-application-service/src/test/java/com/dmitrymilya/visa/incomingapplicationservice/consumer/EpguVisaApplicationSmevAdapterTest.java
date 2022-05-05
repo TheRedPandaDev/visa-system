@@ -5,6 +5,7 @@ import com.dmitrymilya.visa.incomingapplicationservice.converter.PersonDocumentT
 import com.dmitrymilya.visa.incomingapplicationservice.converter.VisaApplicationToDtoConverter;
 import com.dmitrymilya.visa.incomingapplicationservice.converter.VisaApplicationUnmarshaller;
 import com.dmitrymilya.visa.incomingapplicationservice.converter.VisaInfoToDtoConverter;
+import com.dmitrymilya.visa.incomingapplicationservice.dto.KafkaSendMessageDto;
 import com.dmitrymilya.visa.incomingapplicationservice.model.Address;
 import com.dmitrymilya.visa.incomingapplicationservice.model.ApplicantInfo;
 import com.dmitrymilya.visa.incomingapplicationservice.model.CategoryEnum;
@@ -72,7 +73,9 @@ class EpguVisaApplicationSmevAdapterTest {
     public void testConsume() throws JAXBException {
         VisaApplication visaApplication = getApplication();
 
-        epguVisaApplicationSmevAdapter.consume(getMarshalledApplication(visaApplication));
+        String marshalledApplication = getMarshalledApplication(visaApplication);
+        KafkaSendMessageDto kafkaSendMessageDto = new KafkaSendMessageDto("", marshalledApplication);
+        epguVisaApplicationSmevAdapter.consume(kafkaSendMessageDto);
 
         Mockito.verify(kafkaTemplate).send(any(), argumentCaptor.capture());
         VisaApplicationDto visaApplicationDto = argumentCaptor.getValue();

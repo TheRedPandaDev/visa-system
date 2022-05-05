@@ -29,7 +29,7 @@ public class GatewayServiceApplication {
             try {
                 userService.saveUser("admin", "admin");
             } catch (Exception e) {
-                e.printStackTrace();
+                System.out.println("default user saved");
             }
         };
     }

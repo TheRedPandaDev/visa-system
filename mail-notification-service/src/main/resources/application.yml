@@ -11,6 +11,11 @@ spring:
     bootstrap-servers: localhost:29092
     consumer:
       auto-offset-reset: earliest
-      group-id: application_processing_service
+      group-id: mail_notification_service
       key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
       value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      properties:
+        spring:
+          json:
+            trusted:
+              packages: '*'

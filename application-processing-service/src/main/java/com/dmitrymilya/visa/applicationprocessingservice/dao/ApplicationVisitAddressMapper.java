@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 
 @Mapper
 @Repository
-public interface VisitAddressMapper {
+public interface ApplicationVisitAddressMapper {
 
     @Insert("insert into visit_address(id, region, city, visa_application_id) " +
             "values (#{id}, #{region}, #{city}, #{visaApplicationId})")

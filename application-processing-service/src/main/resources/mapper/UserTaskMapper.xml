@@ -53,6 +53,7 @@
 
     <select id="getUserTasksForDecision" resultMap="userTask">
         <include refid="selectUserTasksForDecision"/>
+        order by ut.create_dttm desc
         limit #{limit} offset #{offset}
     </select>
 
@@ -64,7 +65,7 @@
 
     <select id="getUserTaskById" resultMap="userTask">
         <include refid="selectUserTasksForDecision"/>
-        where ut_id = #{id}
+        where ut.id = #{id}
     </select>
 
     <sql id="selectUserTasksForDecision">
@@ -147,7 +148,6 @@
                  inner join work_or_study_info wosi on wosi.id = ai.work_or_study_info_id
                  inner join address wosia on wosia.id = wosi.address_id
                  inner join contact_info wosic on wosic.id = wosi.contact_info_id
-        order by ut.create_dttm desc
     </sql>
 
 </mapper>

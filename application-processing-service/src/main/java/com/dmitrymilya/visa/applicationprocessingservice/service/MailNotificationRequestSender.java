@@ -29,8 +29,8 @@ public class MailNotificationRequestSender {
     private void sendRequest(ApplicantInfoEntity applicantInfoEntity, NotificationReasonEnum notificationReason) {
         ApplicantNameDto applicantNameDto = new ApplicantNameDto();
         applicantNameDto.setLastName(applicantInfoEntity.getLastName());
-        applicantNameDto.setFirstName(applicantNameDto.getFirstName());
-        applicantNameDto.setMiddleName(applicantNameDto.getMiddleName());
+        applicantNameDto.setFirstName(applicantInfoEntity.getFirstName());
+        applicantNameDto.setMiddleName(applicantInfoEntity.getMiddleName());
 
         MailNotificationDto mailNotificationDto = new MailNotificationDto();
         mailNotificationDto.setApplicantName(applicantNameDto);

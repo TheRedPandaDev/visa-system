@@ -22,8 +22,10 @@ public class PersonDocumentToDtoConverter implements Converter<PersonDocument, P
         personDocumentDto.setIssueDate(LocalDate.parse(personDocument.getIssueDate(), DateUtil.DATE_TIME_FORMATTER));
 
         DatePeriod validPeriod = personDocument.getValidPeriod();
-        personDocumentDto.setValidFrom(LocalDate.parse(validPeriod.getStart(), DateUtil.DATE_TIME_FORMATTER));
-        personDocumentDto.setValidTo(LocalDate.parse(validPeriod.getEnd(), DateUtil.DATE_TIME_FORMATTER));
+        if (validPeriod != null) {
+            personDocumentDto.setValidFrom(LocalDate.parse(validPeriod.getStart(), DateUtil.DATE_TIME_FORMATTER));
+            personDocumentDto.setValidTo(LocalDate.parse(validPeriod.getEnd(), DateUtil.DATE_TIME_FORMATTER));
+        }
 
         personDocumentDto.setIssuer(personDocument.getIssuer());
 

@@ -18,6 +18,7 @@ import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.context.annotation.Bean;
 
 import java.time.LocalDate;
@@ -25,7 +26,8 @@ import java.util.Collections;
 import java.util.List;
 
 @SpringBootApplication
-@MapperScan
+@MapperScan({"com.dmitrymilya.visa.applicationprocessingservice.dao", "com.dmitrymilya.visa.shared.dao"})
+@EnableEurekaClient
 public class ApplicationProcessingServiceApplication {
 
 	public static void main(String[] args) {
@@ -83,10 +85,10 @@ public class ApplicationProcessingServiceApplication {
 				applicantInfoDto.setContactInfo(contactInfoDto);
 
 //				applicationProcessingFacade.prepareApplicationForProcessing(visaApplicationDto);
-				Page<List<UserTaskDto>> userTasksForDecision =
-						userTaskService.getUserTasksForDecision(1, 10);
+//				Page<List<UserTaskDto>> userTasksForDecision =
+//						userTaskService.getUserTasksForDecision(1, 10);
 
-				System.out.println(userTasksForDecision);
+//				System.out.println(userTasksForDecision);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}

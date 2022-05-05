@@ -1,5 +1,5 @@
 server:
-  port: 0
+  port: 54585
 
 spring:
   application:
@@ -17,6 +17,11 @@ spring:
       group-id: application_processing_service
       key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
       value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      properties:
+        spring:
+          json:
+            trusted:
+              packages: '*'
     producer:
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
       value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
@@ -25,6 +30,7 @@ eureka:
   instance:
     appname: ${spring.application.name}
     prefer-ip-address: true
+    hostname: localhost
   client:
     service-url:
       defaultZone: http://localhost:2022/eureka/

@@ -6,7 +6,7 @@ import com.dmitrymilya.visa.shared.dao.ContactInfoMapper;
 import com.dmitrymilya.visa.shared.dao.PersonDocumentMapper;
 import com.dmitrymilya.visa.applicationprocessingservice.dao.VisaApplicationMapper;
 import com.dmitrymilya.visa.shared.dao.VisaInfoMapper;
-import com.dmitrymilya.visa.applicationprocessingservice.dao.VisitAddressMapper;
+import com.dmitrymilya.visa.applicationprocessingservice.dao.ApplicationVisitAddressMapper;
 import com.dmitrymilya.visa.shared.dao.WorkOrStudyInfoMapper;
 import com.dmitrymilya.visa.shared.entity.ApplicantInfoEntity;
 import com.dmitrymilya.visa.applicationprocessingservice.entity.VisaApplicationEntity;
@@ -37,7 +37,7 @@ public class VisaApplicationService {
 
     private final VisaApplicationMapper visaApplicationMapper;
 
-    private final VisitAddressMapper visitAddressMapper;
+    private final ApplicationVisitAddressMapper applicationVisitAddressMapper;
 
     @Transactional
     public VisaApplicationEntity saveVisaApplication(VisaApplicationDto visaApplicationDto) {
@@ -72,7 +72,7 @@ public class VisaApplicationService {
 
         visaApplicationEntity.getVisitPoints().forEach(visitAddressEntity -> {
             visitAddressEntity.setVisaApplicationId(visaApplicationEntity.getId());
-            visitAddressMapper.insert(visitAddressEntity);
+            applicationVisitAddressMapper.insert(visitAddressEntity);
         });
 
         return visaApplicationEntity;
